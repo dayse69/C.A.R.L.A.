@@ -31,6 +31,13 @@ createCommand({
         const guild = interaction.guild!;
         const prefixo = interaction.options.getString("prefixo") || "acervo";
         const modo = interaction.options.getString("modo") || "completo";
+        if (!hasPermission(interaction.member, PermissionFlagsBits.Administrator)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: Administrator",
+                ephemeral: true,
+            });
+            return;
+        }
 
         await interaction.reply({ content: "🛠️ Iniciando setup do Acervo...", ephemeral: true });
         try {

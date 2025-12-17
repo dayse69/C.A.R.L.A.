@@ -1,3 +1,4 @@
+import { logger } from "#utils/logger";
 /**
  * Parser de PDF para Fichas Tormenta 20
  * Extrai dados de PDFs de ficha e converte para o formato JSON do bot

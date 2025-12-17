@@ -1,4 +1,5 @@
 import { EmbedBuilder, TextChannel } from "discord.js";
+import { logger } from "#utils/logger";
 
 interface ClassData {
     id?: string;

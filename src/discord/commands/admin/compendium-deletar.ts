@@ -1,4 +1,5 @@
 import { createCommand } from "#base";
+import { hasPermission } from "#utils/permissions";
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
@@ -47,6 +48,14 @@ createCommand({
     async run(interaction) {
         const categoria = interaction.options.getString("categoria", true);
         const nome = interaction.options.getString("nome", true);
+
+        if (!hasPermission(interaction.member, PermissionFlagsBits.Administrator)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: Administrator",
+                ephemeral: true,
+            });
+            return;
+        }
 
         try {
             const deleted = compendiumManager.deleteEntry(categoria, nome);

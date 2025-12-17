@@ -1,4 +1,5 @@
 import { createCommand } from "#base";
+import { hasPermission } from "#utils/permissions";
 import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
@@ -50,6 +51,14 @@ createCommand({
     async run(interaction) {
         const categoria = interaction.options.getString("categoria", true);
         const page = interaction.options.getInteger("pagina") || 1;
+
+        if (!hasPermission(interaction.member, PermissionFlagsBits.ManageMessages)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: ManageMessages",
+                ephemeral: true,
+            });
+            return;
+        }
 
         try {
             const result = compendiumManager.listEntries(categoria, page, 5);

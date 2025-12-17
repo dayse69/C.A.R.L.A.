@@ -1,3 +1,4 @@
+import { logger } from "#utils/logger";
 /**
  * Carregador de compêndio do Tormenta 20
  * Importa dados de classes, raças, magias do JSON

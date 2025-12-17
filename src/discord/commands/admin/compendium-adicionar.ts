@@ -49,6 +49,13 @@ createCommand({
     async run(interaction) {
         const categoria = interaction.options.getString("categoria", true);
         const nome = interaction.options.getString("nome", true);
+        if (!hasPermission(interaction.member, PermissionFlagsBits.ManageMessages)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: ManageMessages",
+                ephemeral: true,
+            });
+            return;
+        }
 
         // Cria modal para detalhes
         const modal = new ModalBuilder()

@@ -28,6 +28,13 @@ createCommand({
     async run(interaction) {
         const targetChannel = interaction.options.getChannel("canal", true);
         const categoryName = interaction.options.getString("categoria", true);
+        if (!hasPermission(interaction.member, PermissionFlagsBits.Administrator)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: Administrator",
+                ephemeral: true,
+            });
+            return;
+        }
 
         if (!targetChannel.isTextBased()) {
             await interaction.reply({
