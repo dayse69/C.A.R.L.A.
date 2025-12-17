@@ -189,7 +189,7 @@ export function splitDeusesConteudo(): void {
     const outputBase = join(process.cwd(), "data", "import", "deuses-arton-conteudo");
 
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
 
@@ -212,7 +212,9 @@ export function splitDeusesConteudo(): void {
         }
 
         for (const poder of extraido.poderesConcedidos) {
-            const nomeArquivo = `${poder.deus.toLowerCase()}-${poder.nome.toLowerCase().replace(/\s+/g, "_")}.txt`;
+            const nomeArquivo = `${poder.deus.toLowerCase()}-${poder.nome
+                .toLowerCase()
+                .replace(/\s+/g, "_")}.txt`;
             const caminhoArquivo = join(dirPoderes, nomeArquivo);
             const conteudoArquivo = `TIPO: poder_concedido\nNOME: ${poder.nome}\nDEUS: ${poder.deus}\nSUBTIPO: concedido\n---\n${poder.conteudo}`;
 

@@ -1,9 +1,9 @@
 import { bootstrap } from "#base";
+import { connectDatabase as connectDatabaseAdapter } from "#database";
+import { warmUpCache } from "#services/compendiumService";
+import { setupErrorHandlers } from "#utils/errorHandler";
+import { logger } from "#utils/logger";
 import "dotenv/config";
-import { connectDatabase as connectDatabaseAdapter } from "./database/index.js";
-import { warmUpCache } from "./services/compendiumService.js";
-import { setupErrorHandlers } from "./utils/errorHandler.js";
-import { logger } from "./utils/logger.js";
 
 // Setup global error handlers (sem process.exit)
 setupErrorHandlers();
@@ -80,7 +80,7 @@ async function main() {
 console.log("[PROCESS] 🚀 Iniciando main()...");
 main().catch((err) => {
     logger.error("[FATAL] Erro na inicialização:", err);
-    console.error("[FATAL] Stack:", err);
+    logger.error("[FATAL] Stack:", err);
     process.exit(1);
 });
 console.log("[PROCESS] ⏳ main() aguardando indefinidamente...");
@@ -97,11 +97,9 @@ process.on("exit", (code) => {
 
 // Detectar se há algum erro não capturado
 process.on("uncaughtException", (err) => {
-    console.error("[UNCAUGHT] Exceção não capturada:", err);
     logger.error("[UNCAUGHT] Exceção não capturada:", err);
 });
 
 process.on("unhandledRejection", (reason) => {
-    console.error("[UNHANDLED] Promise rejection:", reason);
     logger.error("[UNHANDLED] Promise rejection:", reason);
 });

@@ -110,13 +110,13 @@ export function createErrorEmbed(error: BotError | Error): EmbedBuilder {
  */
 export function setupErrorHandlers(): void {
     process.on("uncaughtException", (error: Error) => {
-        console.error("💥 UNCAUGHT EXCEPTION:", error);
+        logger.error("💥 UNCAUGHT EXCEPTION:", error);
         // Não fazer exit para manter bot online (MongoDB auth errors etc)
         logger.error("[ERROR] Uncaught Exception (bot continuará):", error);
     });
 
     process.on("unhandledRejection", (reason: any) => {
-        console.error("💥 UNHANDLED REJECTION:", reason);
+        logger.error("💥 UNHANDLED REJECTION:", reason);
     });
 }
 
@@ -139,7 +139,7 @@ export function logError(error: Error | BotError, context?: Record<string, any>)
         context,
     };
 
-    console.error(JSON.stringify(logData, null, 2));
+    logger.error(JSON.stringify(logData, null, 2));
 }
 
 /**

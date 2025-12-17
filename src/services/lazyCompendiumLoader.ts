@@ -61,7 +61,7 @@ class LazyCompendiumLoader {
                     ...(data.classes_alternativas || []),
                 ];
             } catch (error) {
-                console.error("[LazyLoader] Erro ao carregar classes split:", error);
+                logger.error("[LazyLoader] Erro ao carregar classes split:", error);
                 this.cache.classes = [];
             }
         } else {
@@ -87,14 +87,14 @@ class LazyCompendiumLoader {
 
                 this.cache.classes = [...classesBase, ...variantes];
             } catch (error) {
-                console.error("[LazyLoader] Erro ao carregar classes dos novos arquivos:", error);
+                logger.error("[LazyLoader] Erro ao carregar classes dos novos arquivos:", error);
                 // Fallback para o arquivo antigo se houver erro
                 try {
                     const filePath = path.join(this.fallbackDir, "acervo-do-golem.json");
                     const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
                     this.cache.classes = data.classes || [];
                 } catch (fallbackError) {
-                    console.error("[LazyLoader] Erro ao carregar classes legacy:", fallbackError);
+                    logger.error("[LazyLoader] Erro ao carregar classes legacy:", fallbackError);
                     this.cache.classes = [];
                 }
             }
@@ -109,7 +109,9 @@ class LazyCompendiumLoader {
         });
 
         console.log(
-            `[LazyLoader] Classes carregadas: ${this.cache.classes?.length || 0} itens em ${loadTime.toFixed(2)}ms`
+            `[LazyLoader] Classes carregadas: ${
+                this.cache.classes?.length || 0
+            } itens em ${loadTime.toFixed(2)}ms`
         );
 
         return this.cache.classes || [];
@@ -131,7 +133,7 @@ class LazyCompendiumLoader {
                 const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
                 this.cache.racas = data.racas || [];
             } catch (error) {
-                console.error("[LazyLoader] Erro ao carregar raças split:", error);
+                logger.error("[LazyLoader] Erro ao carregar raças split:", error);
                 this.cache.racas = [];
             }
         } else {
@@ -153,7 +155,7 @@ class LazyCompendiumLoader {
                     }
                 }
             } catch (error) {
-                console.error("[LazyLoader] Erro ao carregar raças:", error);
+                logger.error("[LazyLoader] Erro ao carregar raças:", error);
                 this.cache.racas = [];
             }
         }
@@ -167,7 +169,9 @@ class LazyCompendiumLoader {
         });
 
         console.log(
-            `[LazyLoader] Raças carregadas: ${this.cache.racas?.length || 0} itens em ${loadTime.toFixed(2)}ms`
+            `[LazyLoader] Raças carregadas: ${
+                this.cache.racas?.length || 0
+            } itens em ${loadTime.toFixed(2)}ms`
         );
 
         return this.cache.racas || [];

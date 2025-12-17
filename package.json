@@ -5,7 +5,7 @@
     "main": "build/discord/index.js",
     "scripts": {
         "build": "tsc",
-        "start": "node build/discord/index.js",
+        "start": "node -r dotenv/config build/discord/index.js",
         "dev": "ts-node -r dotenv/config src/discord/index.ts"
     },
     "author": "",

@@ -41,7 +41,7 @@ export async function extrairTextoPDF(caminhoArquivo: string): Promise<string> {
         const dados = await PDFParse(dadosArquivo);
         return dados.text;
     } catch (erro) {
-        console.error("Erro ao extrair PDF. Instale com: npm i pdf-parse @types/pdf-parse");
+        logger.error("Erro ao extrair PDF. Instale com: npm i pdf-parse @types/pdf-parse");
         throw erro;
     }
 }

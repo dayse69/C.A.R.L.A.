@@ -58,7 +58,7 @@ export async function importChannelMessages(channel: TextChannel): Promise<Impor
         console.log(`[ChannelImporter] Total importado: ${entries.length} entradas`);
         return entries;
     } catch (err) {
-        console.error(`[ChannelImporter] Erro ao importar canal:`, err);
+        logger.error(`[ChannelImporter] Erro ao importar canal:`, err);
         return [];
     }
 }
@@ -133,7 +133,7 @@ export function saveImportedData(categoryName: string, entries: ImportedEntry[])
         console.log(`[ChannelImporter] ✅ Arquivo salvo: ${fileName}`);
         return filePath;
     } catch (err) {
-        console.error(`[ChannelImporter] ❌ Erro ao salvar arquivo:`, err);
+        logger.error(`[ChannelImporter] ❌ Erro ao salvar arquivo:`, err);
         throw err;
     }
 }

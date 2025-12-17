@@ -12,7 +12,7 @@ export class DatabaseSeeder {
      */
     static async seedAll(): Promise<void> {
         if (!isConnected()) {
-            console.error("Database not connected");
+            logger.error("Database not connected");
             return;
         }
 
@@ -27,7 +27,7 @@ export class DatabaseSeeder {
 
             console.log("✓ Database seed completed successfully");
         } catch (erro) {
-            console.error("✗ Seed failed:", erro);
+            logger.error("✗ Seed failed:", erro);
         }
     }
 

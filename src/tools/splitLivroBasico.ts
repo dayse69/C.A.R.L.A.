@@ -170,7 +170,7 @@ export function splitLivroBasico(): void {
     const outputBase = join(process.cwd(), "data", "import", "livro-basico");
 
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
 

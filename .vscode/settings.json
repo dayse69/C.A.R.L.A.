@@ -86,5 +86,51 @@
     },
     "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
     "errorLens.fontSize": "0.9em",
-    "errorLens.fontWeight": "600"
+
+    // Todo Tree
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.general.tags": ["TODO", "FIXME", "BUG", "HACK", "NOTE"],
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "#fff",
+        "background": "#ff9800",
+        "type": "text"
+    },
+
+    // Code Spell Checker
+    "cSpell.language": "en,pt,pt-BR",
+    "cSpell.enabled": true,
+    "cSpell.userWords": ["discord", "ficha", "rolagem", "compendium", "pv", "pm"],
+
+    // Import Cost
+    "importCost.showCalculating": true,
+    "importCost.showNotification": false,
+
+    // REST Client
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "baseUrl": "http://localhost:3000"
+        }
+    },
+    "rest-client.previewOption": "exchange",
+
+    // Bracket Pair Colorizer 2
+    "bracket-pair-colorizer-2.colors": ["#FFD700", "#DA70D6", "#87CEFA", "#32CD32"],
+    "bracket-pair-colorizer-2.activeScopeCSS": [
+        "borderStyle : solid",
+        "borderWidth : 1px",
+        "borderColor : {color}; opacity: 0.5"
+    ],
+
+    // Test Explorer UI
+    "test-explorer.codeLens": true,
+    "test-explorer.gutterDecoration": true,
+
+    // Project Manager
+    "projectManager.git.baseFolders": ["${workspaceFolder}"],
+
+    // Code Runner
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        "typescript": "npx ts-node $fullFileName"
+    }
 }

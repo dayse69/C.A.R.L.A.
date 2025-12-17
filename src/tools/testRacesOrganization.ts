@@ -24,7 +24,7 @@ console.log(`   ✓ races.json (antigo): ${racesExists ? "✅ Existe" : "❌ Nã
 console.log();
 
 if (!racasBaseExists) {
-    console.error("❌ Arquivo racas-base.json não encontrado!");
+    logger.error("❌ Arquivo racas-base.json não encontrado!");
     process.exit(1);
 }
 

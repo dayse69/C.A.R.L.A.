@@ -24,7 +24,7 @@ console.log(`   ✓ classes-variantes.json: ${variantesExists ? "✅ Existe" : "
 console.log();
 
 if (!classesBaseExists || !variantesExists) {
-    console.error("❌ Arquivos necessários não encontrados!");
+    logger.error("❌ Arquivos necessários não encontrados!");
     process.exit(1);
 }
 

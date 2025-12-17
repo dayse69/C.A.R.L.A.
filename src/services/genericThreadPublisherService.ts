@@ -167,7 +167,7 @@ export async function publishEntryToThread(
 
         console.log(`  ✅ Tópico criado para ${name}`);
     } catch (err) {
-        console.error(`[ThreadPublisher] Erro ao publicar ${name}:`, err);
+        logger.error(`[ThreadPublisher] Erro ao publicar ${name}:`, err);
         throw err;
     }
 }

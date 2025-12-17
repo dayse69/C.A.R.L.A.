@@ -199,4 +199,4 @@ async function splitCompendium() {
     console.log(`\n📁 Arquivos salvos em: data/compendium/split/`);
 }
 
-splitCompendium().catch(console.error);
+splitCompendium().catch(logger.error);

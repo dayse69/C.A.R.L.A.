@@ -249,7 +249,11 @@ function main() {
             "utf-8"
         );
         console.log(
-            `✅ Templates de classes gerados: ${path.join("data", "templates", "classes.templates.json")}`
+            `✅ Templates de classes gerados: ${path.join(
+                "data",
+                "templates",
+                "classes.templates.json"
+            )}`
         );
         console.log(`📊 Total: ${templates.length}`);
     } else if (type === "races") {
@@ -265,7 +269,11 @@ function main() {
             "utf-8"
         );
         console.log(
-            `✅ Templates de raças gerados: ${path.join("data", "templates", "races.templates.json")}`
+            `✅ Templates de raças gerados: ${path.join(
+                "data",
+                "templates",
+                "races.templates.json"
+            )}`
         );
         console.log(`📊 Total: ${templates.length}`);
     } else if (type === "items") {
@@ -281,11 +289,15 @@ function main() {
             "utf-8"
         );
         console.log(
-            `✅ Templates de itens gerados: ${path.join("data", "templates", "items.templates.json")}`
+            `✅ Templates de itens gerados: ${path.join(
+                "data",
+                "templates",
+                "items.templates.json"
+            )}`
         );
         console.log(`📊 Total: ${templates.length}`);
     } else {
-        console.error(`❌ Tipo desconhecido: ${type}. Use: classes, races ou items`);
+        logger.error(`❌ Tipo desconhecido: ${type}. Use: classes, races ou items`);
         process.exit(1);
     }
 }

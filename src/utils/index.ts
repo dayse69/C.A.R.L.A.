@@ -3,6 +3,6 @@
  * Centraliza exports de utilitários
  */
 
-export * from "./constants.js";
-export * from "./errorHandler.js";
-export * from "./logger.js";
+export * from "#utils/constants";
+export * from "#utils/errorHandler";
+export * from "#utils/logger";

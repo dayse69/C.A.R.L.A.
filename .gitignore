@@ -1,22 +1,21 @@
-# Folders
-/build
-/dist
-/discloud
-/deprecated
-/node_modules
+# Node
+node_modules/
 
-# Files
-/.env
-/.env.dev
-/.env.development
+# Logs
+logs/
+*.log
 
-# Config files
-/firebase.json
-
-# Extensions
+# Dados grandes / Compendium
+data/
+*.pdf
+*.png
+*.jpg
+*.webp
 *.zip
-*.sqlite
-*.sql
-*.exe
-*.db
-*.development.json
+
+# Docker
+.env
+
+# OS
+.DS_Store
+Thumbs.db

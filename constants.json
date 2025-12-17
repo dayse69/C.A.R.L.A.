@@ -1,6 +1,14 @@
 {
-  "BOT_NAME": "MeuDiscordBot",
-  "VERSION": "1.0.0",
-  "PREFIX": "!",
-  "OWNER_ID": "seu_id_aqui"
+    "BOT_NAME": "MeuDiscordBot",
+    "VERSION": "1.0.0",
+    "PREFIX": "!",
+    "OWNER_ID": "seu_id_aqui",
+    "ZOD_ERRORS": {
+        "undefined_env": "Some environment variables are undefined.",
+        "ways_to_fix": [
+            "Run the project with ./package.json scripts that contain the --env-file flag.",
+            "Inject the variables into the environment in some way."
+        ],
+        "expected_received": "Expected: {expected} | Received: {received}"
+    }
 }

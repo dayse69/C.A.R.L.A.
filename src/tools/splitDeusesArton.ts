@@ -183,7 +183,7 @@ export function splitDeusesArton(): void {
     const outputBase = join(process.cwd(), "data", "import", "deuses-arton");
 
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
 

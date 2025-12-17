@@ -136,7 +136,7 @@ export function splitPoderes(): void {
     const inputDir = join(process.cwd(), "data", "import", "livro-basico", "poder");
 
     if (!existsSync(inputDir)) {
-        console.error(`❌ Diretório não encontrado: ${inputDir}`);
+        logger.error(`❌ Diretório não encontrado: ${inputDir}`);
         return;
     }
 
