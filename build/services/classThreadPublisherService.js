@@ -96,7 +96,7 @@ export async function publishClassToThread(channel, classData, delayMs = 300) {
         console.log(`  ✅ Tópico criado para ${className}`);
     }
     catch (err) {
-        console.error(`[ClassThreadPublisher] Erro ao publicar ${className}:`, err);
+        logger.error(`[ClassThreadPublisher] Erro ao publicar ${className}:`, err);
         throw err;
     }
 }

@@ -18,7 +18,7 @@ console.log(`   ✓ classes-base.json: ${classesBaseExists ? "✅ Existe" : "❌
 console.log(`   ✓ classes-variantes.json: ${variantesExists ? "✅ Existe" : "❌ Não encontrado"}`);
 console.log();
 if (!classesBaseExists || !variantesExists) {
-    console.error("❌ Arquivos necessários não encontrados!");
+    logger.error("❌ Arquivos necessários não encontrados!");
     process.exit(1);
 }
 // 2. Carregar dados dos arquivos

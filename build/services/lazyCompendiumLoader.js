@@ -37,7 +37,7 @@ class LazyCompendiumLoader {
                 ];
             }
             catch (error) {
-                console.error("[LazyLoader] Erro ao carregar classes split:", error);
+                logger.error("[LazyLoader] Erro ao carregar classes split:", error);
                 this.cache.classes = [];
             }
         }
@@ -61,7 +61,7 @@ class LazyCompendiumLoader {
                 this.cache.classes = [...classesBase, ...variantes];
             }
             catch (error) {
-                console.error("[LazyLoader] Erro ao carregar classes dos novos arquivos:", error);
+                logger.error("[LazyLoader] Erro ao carregar classes dos novos arquivos:", error);
                 // Fallback para o arquivo antigo se houver erro
                 try {
                     const filePath = path.join(this.fallbackDir, "acervo-do-golem.json");
@@ -69,7 +69,7 @@ class LazyCompendiumLoader {
                     this.cache.classes = data.classes || [];
                 }
                 catch (fallbackError) {
-                    console.error("[LazyLoader] Erro ao carregar classes legacy:", fallbackError);
+                    logger.error("[LazyLoader] Erro ao carregar classes legacy:", fallbackError);
                     this.cache.classes = [];
                 }
             }
@@ -99,7 +99,7 @@ class LazyCompendiumLoader {
                 this.cache.racas = data.racas || [];
             }
             catch (error) {
-                console.error("[LazyLoader] Erro ao carregar raças split:", error);
+                logger.error("[LazyLoader] Erro ao carregar raças split:", error);
                 this.cache.racas = [];
             }
         }
@@ -124,7 +124,7 @@ class LazyCompendiumLoader {
                 }
             }
             catch (error) {
-                console.error("[LazyLoader] Erro ao carregar raças:", error);
+                logger.error("[LazyLoader] Erro ao carregar raças:", error);
                 this.cache.racas = [];
             }
         }

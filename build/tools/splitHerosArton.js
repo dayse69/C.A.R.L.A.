@@ -116,7 +116,7 @@ export function splitHerosArton() {
     const inputPath = join(process.cwd(), "data", "import", "T20 - Heróis de Arton.txt");
     const outputBase = join(process.cwd(), "data", "import", "herois-arton");
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
     console.log("📖 Lendo Heróis de Arton...");

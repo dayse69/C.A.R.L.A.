@@ -171,4 +171,4 @@ async function splitCompendium() {
     console.log(`  ${Object.values(stats).reduce((a, b) => a + b, 0)} itens processados`);
     console.log(`\n📁 Arquivos salvos em: data/compendium/split/`);
 }
-splitCompendium().catch(console.error);
+splitCompendium().catch(logger.error);

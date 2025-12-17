@@ -1,4 +1,5 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { hasPermission } from "#utils/permissions";
+import { EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
 import { runImport } from "../../../tools/importTxt.js";
 
 export const data = new SlashCommandBuilder()
@@ -7,10 +8,7 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction: any) {
     const member = interaction.member;
-    const isAdmin =
-        interaction.memberPermissions?.has("Administrator") ||
-        member?.permissions?.has?.("Administrator");
-    if (!isAdmin) {
+    if (!hasPermission(member, PermissionFlagsBits.Administrator)) {
         return interaction.reply({
             content: "❌ Permissão necessária: Administrator",
             ephemeral: true,

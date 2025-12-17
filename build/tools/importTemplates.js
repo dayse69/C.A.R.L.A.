@@ -209,7 +209,7 @@ function main() {
         console.log(`📊 Total: ${templates.length}`);
     }
     else {
-        console.error(`❌ Tipo desconhecido: ${type}. Use: classes, races ou items`);
+        logger.error(`❌ Tipo desconhecido: ${type}. Use: classes, races ou items`);
         process.exit(1);
     }
 }

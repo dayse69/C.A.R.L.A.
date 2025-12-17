@@ -145,7 +145,7 @@ export function splitLivroBasico() {
     const inputPath = join(process.cwd(), "data", "import", "T20 - Livro Básico.txt");
     const outputBase = join(process.cwd(), "data", "import", "livro-basico");
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
     console.log("📖 Lendo Livro Básico...");

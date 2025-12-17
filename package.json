@@ -6,7 +6,11 @@
     "scripts": {
         "build": "tsc",
         "start": "node -r dotenv/config build/discord/index.js",
-        "dev": "ts-node -r dotenv/config src/discord/index.ts"
+        "dev": "ts-node -r dotenv/config src/discord/index.ts",
+        "test": "vitest run",
+        "test:ui": "vitest --ui",
+        "deploy": "echo \"Adicione aqui seu comando de deploy (ex: git push heroku main)\"",
+        "backup": "node scripts/backup.js || echo \"Adicione seu script de backup em scripts/backup.js\""
     },
     "author": "",
     "license": "MIT",

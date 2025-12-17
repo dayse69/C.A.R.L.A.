@@ -1,7 +1,14 @@
-/**
- * Database Adapter - Seleciona entre MongoDB e LocalDB automaticamente
- */
+// Barrel export para Database
+export * from "./CampaignRepository";
+export * from "./CharacterRepository";
+export * from "./CompendiumRepository";
+export * from "./DatabaseIndexes";
+export * from "./DatabaseSeeder";
+export * from "./localdb";
+export * from "./models";
+export * from "./mongodb";
 
+// Database Adapter - Seleciona entre MongoDB e LocalDB automaticamente
 import localdb from "#database/localdb";
 import { env } from "#env";
 import { logger } from "#utils/logger";

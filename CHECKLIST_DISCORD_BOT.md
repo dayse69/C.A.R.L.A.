@@ -6,7 +6,7 @@
 2. Adicionar bot à aplicação e copiar o token
 3. Configurar permissões e intents necessárias
 4. Clonar ou criar o projeto localmente
-5. Criar arquivo `.env` com variáveis (DISCORD_TOKEN, etc)
+5. Criar arquivo `.env` com variáveis (BOT_TOKEN, etc)
 6. Instalar dependências (`npm install`)
 7. Configurar arquivos do projeto (constants, configs)
 8. (Opcional) Configurar banco de dados

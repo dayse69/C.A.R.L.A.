@@ -19,7 +19,7 @@ Error: Invalid token
 1. Verifique se o `.env` existe e está configurado:
 
     ```bash
-    DISCORD_TOKEN=seu_token_aqui
+    BOT_TOKEN=seu_token_aqui
     DISCORD_APP_ID=seu_app_id
     ```
 
@@ -102,7 +102,7 @@ npm run build
 
 **Sintomas:**
 
-- Slash commands não aparecem ao digitar `/`
+-   Slash commands não aparecem ao digitar `/`
 
 **Soluções:**
 
@@ -114,10 +114,12 @@ npm run build
     ```
 
 2. **Limpar cache do Discord:**
+
     - Windows: `Ctrl + Shift + R`
     - Mac: `Cmd + Shift + R`
 
 3. **Reautorizar bot:**
+
     - Gere novo link de convite no Developer Portal
     - Inclua `applications.commands` scope
     - Reautorize o bot no servidor
@@ -168,8 +170,8 @@ The application did not respond
 
 **Sintomas:**
 
-- Clique em botão não faz nada
-- Modal não abre
+-   Clique em botão não faz nada
+-   Modal não abre
 
 **Soluções:**
 
@@ -247,8 +249,8 @@ chmod 644 data/localdb/*.json
 
 **Sintomas:**
 
-- `/acervo` mostra lista vazia
-- Comandos de criação sem opções
+-   `/acervo` mostra lista vazia
+-   Comandos de criação sem opções
 
 **Soluções:**
 
@@ -291,8 +293,8 @@ chmod 644 data/localdb/*.json
 
 **Sintomas:**
 
-- Comandos demoram 5+ segundos
-- "Thinking..." prolongado
+-   Comandos demoram 5+ segundos
+-   "Thinking..." prolongado
 
 **Diagnóstico:**
 
@@ -439,6 +441,7 @@ WebSocket was closed before the connection was established
     ```
 
 2. **Verificar proxy/firewall:**
+
     - Libere porta 443 (wss)
     - Whitelist: `*.discord.com`
 
@@ -446,7 +449,7 @@ WebSocket was closed before the connection was established
     ```typescript
     // Já implementado no bot
     client.on("disconnect", () => {
-        client.login(process.env.DISCORD_TOKEN);
+        client.login(process.env.BOT_TOKEN);
     });
     ```
 
@@ -486,9 +489,11 @@ grep "❌" logs/combined.log
 ## 🆘 Ainda com Problemas?
 
 1. **Verifique issues existentes:**
+
     - [GitHub Issues](https://github.com/seu-repo/issues)
 
 2. **Crie um novo issue:**
+
     - Inclua logs completos
     - Versões (Node, MongoDB, SO)
     - Passos para reproduzir

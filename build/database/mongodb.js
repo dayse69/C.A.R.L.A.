@@ -130,7 +130,7 @@ async function createIndexes() {
         console.log("✓ Database indexes created");
     }
     catch (erro) {
-        console.error("✗ Failed to create indexes:", erro);
+        logger.error("✗ Failed to create indexes:", erro);
     }
 }
 /**

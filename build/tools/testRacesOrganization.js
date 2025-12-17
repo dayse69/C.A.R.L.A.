@@ -18,7 +18,7 @@ console.log(`   ✓ racas-base.json: ${racasBaseExists ? "✅ Existe" : "❌ Nã
 console.log(`   ✓ races.json (antigo): ${racesExists ? "✅ Existe" : "❌ Não encontrado"}`);
 console.log();
 if (!racasBaseExists) {
-    console.error("❌ Arquivo racas-base.json não encontrado!");
+    logger.error("❌ Arquivo racas-base.json não encontrado!");
     process.exit(1);
 }
 // 2. Carregar dados do arquivo

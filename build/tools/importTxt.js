@@ -266,7 +266,7 @@ export async function runImport() {
     };
 }
 if (process.argv[1]?.includes("importTxt")) {
-    runImport().catch((e) => console.error("Erro na importação:", e));
+    runImport().catch((e) => logger.error("Erro na importação:", e));
 }
 // Template de campos por categoria (TIPO) para normalização automática
 function applyTemplate(item) {

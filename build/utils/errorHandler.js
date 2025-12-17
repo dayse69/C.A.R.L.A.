@@ -94,12 +94,12 @@ export function createErrorEmbed(error) {
  */
 export function setupErrorHandlers() {
     process.on("uncaughtException", (error) => {
-        console.error("💥 UNCAUGHT EXCEPTION:", error);
+        logger.error("💥 UNCAUGHT EXCEPTION:", error);
         // Não fazer exit para manter bot online (MongoDB auth errors etc)
         logger.error("[ERROR] Uncaught Exception (bot continuará):", error);
     });
     process.on("unhandledRejection", (reason) => {
-        console.error("💥 UNHANDLED REJECTION:", reason);
+        logger.error("💥 UNHANDLED REJECTION:", reason);
     });
 }
 /**
@@ -120,7 +120,7 @@ export function logError(error, context) {
         },
         context,
     };
-    console.error(JSON.stringify(logData, null, 2));
+    logger.error(JSON.stringify(logData, null, 2));
 }
 /**
  * Wrapper para operações assíncronas com error handling

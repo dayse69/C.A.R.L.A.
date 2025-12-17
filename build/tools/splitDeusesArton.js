@@ -157,7 +157,7 @@ export function splitDeusesArton() {
     const inputPath = join(process.cwd(), "data", "import", "T20 - Deuses de Arton.txt");
     const outputBase = join(process.cwd(), "data", "import", "deuses-arton");
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
     console.log("📖 Lendo Deuses de Arton...");

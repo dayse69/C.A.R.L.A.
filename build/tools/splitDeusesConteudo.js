@@ -159,7 +159,7 @@ export function splitDeusesConteudo() {
     const inputPath = join(process.cwd(), "data", "import", "T20 - Deuses de Arton.txt");
     const outputBase = join(process.cwd(), "data", "import", "deuses-arton-conteudo");
     if (!existsSync(inputPath)) {
-        console.error(`❌ Arquivo não encontrado: ${inputPath}`);
+        logger.error(`❌ Arquivo não encontrado: ${inputPath}`);
         return;
     }
     console.log("📖 Lendo Deuses de Arton (conteúdo específico)...");
@@ -176,7 +176,9 @@ export function splitDeusesConteudo() {
             mkdirSync(dirPoderes, { recursive: true });
         }
         for (const poder of extraido.poderesConcedidos) {
-            const nomeArquivo = `${poder.deus.toLowerCase()}-${poder.nome.toLowerCase().replace(/\s+/g, "_")}.txt`;
+            const nomeArquivo = `${poder.deus.toLowerCase()}-${poder.nome
+                .toLowerCase()
+                .replace(/\s+/g, "_")}.txt`;
             const caminhoArquivo = join(dirPoderes, nomeArquivo);
             const conteudoArquivo = `TIPO: poder_concedido\nNOME: ${poder.nome}\nDEUS: ${poder.deus}\nSUBTIPO: concedido\n---\n${poder.conteudo}`;
             writeFileSync(caminhoArquivo, conteudoArquivo, "utf-8");

@@ -39,7 +39,7 @@ export async function importChannelMessages(channel) {
         return entries;
     }
     catch (err) {
-        console.error(`[ChannelImporter] Erro ao importar canal:`, err);
+        logger.error(`[ChannelImporter] Erro ao importar canal:`, err);
         return [];
     }
 }
@@ -105,7 +105,7 @@ export function saveImportedData(categoryName, entries) {
         return filePath;
     }
     catch (err) {
-        console.error(`[ChannelImporter] ❌ Erro ao salvar arquivo:`, err);
+        logger.error(`[ChannelImporter] ❌ Erro ao salvar arquivo:`, err);
         throw err;
     }
 }

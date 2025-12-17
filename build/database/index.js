@@ -1,9 +1,9 @@
 /**
  * Database Adapter - Seleciona entre MongoDB e LocalDB automaticamente
  */
+import localdb from "#database/localdb";
 import { env } from "#env";
-import { logger } from "../utils/logger.js";
-import localdb from "./localdb.js";
+import { logger } from "#utils/logger";
 let useLocalDB = false;
 let isConnected = false;
 /**
@@ -240,8 +240,7 @@ export async function saveToBothDatabases(collectionName, operation, ...args) {
         // Tenta MongoDB primeiro
         if (operation === "insertOne") {
             const [doc] = args;
-            mongoResult =
-                await collections[collectionName].insertOne(doc);
+            mongoResult = await collections[collectionName].insertOne(doc);
             const id = mongoResult.insertedId.toString();
             // Salva também no LocalDB
             try {
@@ -272,7 +271,7 @@ export async function saveToBothDatabases(collectionName, operation, ...args) {
         }
     }
     catch (mongoErr) {
-        console.error(`[DualSave] ❌ MongoDB falhou para ${collectionName}:`, mongoErr);
+        logger.error(`[DualSave] ❌ MongoDB falhou para ${collectionName}:`, mongoErr);
         // Fallback: salva só no LocalDB
         if (operation === "insertOne") {
             const [doc] = args;

@@ -147,12 +147,73 @@ command.subcommand({
                 .setRequired(false)
                 .setValue(String(personagem.nivelTotal || 1));
 
+            const racaInput = new TextInputBuilder()
+                .setCustomId("raca")
+                .setLabel("Raça")
+                .setStyle(TextInputStyle.Short)
+                .setMaxLength(40)
+                .setRequired(false)
+                .setValue(personagem.raca || "");
+
+            const classeInput = new TextInputBuilder()
+                .setCustomId("classe")
+                .setLabel("Classe")
+                .setStyle(TextInputStyle.Short)
+                .setMaxLength(40)
+                .setRequired(false)
+                .setValue(
+                    personagem.classe ||
+                        (Array.isArray(personagem.classes)
+                            ? personagem.classes.map((c: any) => c.nome).join("/")
+                            : "")
+                );
+
             modal.addComponents(
                 new ActionRowBuilder<any>().addComponents(descricaoInput as any),
-                new ActionRowBuilder<any>().addComponents(nivelInput as any)
+                new ActionRowBuilder<any>().addComponents(nivelInput as any),
+                new ActionRowBuilder<any>().addComponents(racaInput as any),
+                new ActionRowBuilder<any>().addComponents(classeInput as any)
             );
 
             await interaction.showModal(modal);
+
+            // Após o usuário editar, envie botões para edição avançada
+            // (isso deve ser feito em um handler de interação de modal, mas aqui está o esqueleto)
+            // Exemplo de resposta após edição básica:
+            /*
+            const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = await import("discord.js");
+            const row = new ActionRowBuilder<any>().addComponents(
+                new ButtonBuilder()
+                    .setCustomId(`editar_itens/${charId}`)
+                    .setLabel("Editar Itens")
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setCustomId(`editar_devocao/${charId}`)
+                    .setLabel("Editar Devoção")
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setCustomId(`editar_distincao/${charId}`)
+                    .setLabel("Editar Distinção")
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setCustomId(`editar_magias/${charId}`)
+                    .setLabel("Editar Magias")
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setCustomId(`editar_habilidades/${charId}`)
+                    .setLabel("Editar Habilidades")
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setCustomId(`editar_poderes/${charId}`)
+                    .setLabel("Editar Poderes")
+                    .setStyle(ButtonStyle.Secondary)
+            );
+            await interaction.followUp({
+                content: "Deseja editar detalhes avançados da ficha?",
+                components: [row],
+                ephemeral: true
+            });
+            */
         } catch (erro) {
             console.error(erro);
             const embedErro = criarEmbedErro(
@@ -202,14 +263,17 @@ command.subcommand({
                 })
                 .join("\n");
 
-            const { EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } =
-                await import("discord.js");
+            const { EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = await import(
+                "discord.js"
+            );
             const embed = new EmbedBuilder()
                 .setColor("#8B00FF")
                 .setTitle("📜 Suas Fichas")
                 .setDescription(lista)
                 .setFooter({
-                    text: `Página ${page + 1}/${totalPages} • Total: ${minhasPersonagens.length} fichas`,
+                    text: `Página ${page + 1}/${totalPages} • Total: ${
+                        minhasPersonagens.length
+                    } fichas`,
                 });
 
             const components = [];

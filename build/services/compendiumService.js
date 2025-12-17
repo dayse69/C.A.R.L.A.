@@ -2,11 +2,11 @@
  * Carregador de compêndio do Tormenta 20
  * Importa dados de classes, raças, magias do JSON
  */
+import { loadImportedCategory } from "#services/channelImporterService";
+import { lazyLoader } from "#services/lazyCompendiumLoader";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { loadImportedCategory } from "./channelImporterService.js";
-import { lazyLoader } from "./lazyCompendiumLoader.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let compendiumCache = null;
 let acervoCache = null;
@@ -36,7 +36,7 @@ export function loadCompendium() {
         return compendiumCache;
     }
     catch (error) {
-        console.error("Erro ao carregar compêndio:", error);
+        logger.error("Erro ao carregar compêndio:", error);
         return {
             classes: [],
             races: [],
@@ -61,7 +61,7 @@ function loadAcervo() {
         return acervoCache;
     }
     catch (error) {
-        console.error("Erro ao carregar acervo do golem:", error);
+        logger.error("Erro ao carregar acervo do golem:", error);
         acervoCache = { races: [], classes: [] };
         return acervoCache;
     }
@@ -184,7 +184,7 @@ export async function warmUpCache() {
         console.log(`[Cache] ${getAllRacesExtended().length} raças na memória`);
     }
     catch (error) {
-        console.error("[Cache] ❌ Erro durante aquecimento:", error);
+        logger.error("[Cache] ❌ Erro durante aquecimento:", error);
     }
 }
 /**

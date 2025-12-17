@@ -1,6 +1,7 @@
 import { createResponder, ResponderType } from "#base";
 import { env } from "#env";
-import { EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { hasAdminOrManageGuild } from "#utils/permissions";
+import { EmbedBuilder } from "discord.js";
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
@@ -56,11 +57,7 @@ createResponder({
             .filter(Boolean);
 
         const isAllowedUser = userIds.includes(interaction.user.id);
-        const hasPerms = interaction.inGuild()
-            ? interaction.memberPermissions?.has(
-                  PermissionFlagsBits.Administrator | PermissionFlagsBits.ManageGuild
-              )
-            : false;
+        const hasPerms = interaction.inGuild() ? hasAdminOrManageGuild(interaction.member) : false;
         const hasAllowedRole = interaction.inGuild()
             ? roleIds.some(
                   (rid: string) =>
