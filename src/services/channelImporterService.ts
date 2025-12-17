@@ -1,5 +1,5 @@
-import { Collection, Message, TextChannel } from "discord.js";
 import { logger } from "#utils/logger";
+import { Collection, Message, TextChannel } from "discord.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";

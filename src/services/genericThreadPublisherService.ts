@@ -1,5 +1,5 @@
-import { EmbedBuilder, TextChannel } from "discord.js";
 import { logger } from "#utils/logger";
+import { EmbedBuilder, TextChannel } from "discord.js";
 
 type Categoria = "racas" | "classes" | string;
 

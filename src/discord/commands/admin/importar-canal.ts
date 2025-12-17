@@ -63,7 +63,11 @@ createCommand({
             saveImportedData(categoryName, entries);
 
             await interaction.followUp({
-                content: `✅ Importação concluída!\n• Categoria: \`${categoryName}\`\n• Entradas: ${entries.length}\n• Arquivo: \`compendium_${categoryName.toLowerCase().replace(/\\s+/g, "_")}.json\``,
+                content: `✅ Importação concluída!\n• Categoria: \`${categoryName}\`\n• Entradas: ${
+                    entries.length
+                }\n• Arquivo: \`compendium_${categoryName
+                    .toLowerCase()
+                    .replace(/\\s+/g, "_")}.json\``,
                 ephemeral: true,
             });
         } catch (err) {

@@ -58,15 +58,21 @@ createCommand({
             summary += `\n🔧 **Modo:** ${modo}`;
 
             if (createdChannels.length > 0) {
-                summary += `\n✨ **Novos Canais:**\n${createdChannels.map((c) => `  • #${c}`).join("\n")}`;
+                summary += `\n✨ **Novos Canais:**\n${createdChannels
+                    .map((c) => `  • #${c}`)
+                    .join("\n")}`;
             }
 
             if (updatedChannels.length > 0) {
-                summary += `\n🔄 **Canais Atualizados:**\n${updatedChannels.map((c) => `  • #${c}`).join("\n")}`;
+                summary += `\n🔄 **Canais Atualizados:**\n${updatedChannels
+                    .map((c) => `  • #${c}`)
+                    .join("\n")}`;
             }
 
             if (deletedChannels.length > 0) {
-                summary += `\n🗑️ **Canais Removidos:**\n${deletedChannels.map((c) => `  • #${c}`).join("\n")}`;
+                summary += `\n🗑️ **Canais Removidos:**\n${deletedChannels
+                    .map((c) => `  • #${c}`)
+                    .join("\n")}`;
             }
 
             if (
