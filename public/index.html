@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>🧿 Dashboard CARLA - Gerenciador de Fichas</title>
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <div class="header-content">
+                    <h1>🧿 ARQUIVO CARLA</h1>
+                    <p>Gerenciador de Fichas de Personagens</p>
+                </div>
+                <div class="header-status">
+                    <span id="status-db">🔴 Conectando...</span>
+                </div>
+            </header>
+
+            <main class="main">
+                <!-- Seção de Filtros -->
+                <section class="filters">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="🔍 Buscar ficha por nome..."
+                        class="search-input"
+                    />
+                    <button id="btn-refresh" class="btn btn-primary">🔄 Atualizar</button>
+                </section>
+
+                <!-- Seção de Fichas -->
+                <section class="fichas-container">
+                    <div id="fichas-list" class="fichas-grid">
+                        <div class="loading">⏳ Carregando fichas...</div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Modal de Detalhes -->
+            <div id="modal-detail" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-title">Detalhes da Ficha</h2>
+                        <button class="modal-close" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div id="modal-body" class="modal-body">
+                        <!-- Conteúdo dinâmico aqui -->
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" onclick="closeModal()">Fechar</button>
+                        <button class="btn btn-danger" id="btn-delete" onclick="deleteCharacter()">
+                            🗑️ Deletar
+                        </button>
+                        <button class="btn btn-success" id="btn-save" onclick="saveChanges()">
+                            💾 Salvar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+# Arquivos ignorados pelo Prettier
+build/
+node_modules/
+*.min.js
+*.min.css
+package-lock.json
+.env
+*.log

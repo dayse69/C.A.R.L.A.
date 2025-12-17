@@ -1,0 +1,159 @@
+{
+    "_id": "exemplo-001",
+    "usuarioId": "123456789",
+    "nome": "Sektor da Noite",
+    "raca": "Humano",
+    "classe": "Guerreiro Arcano",
+    "nivelTotal": 5,
+    "atributos": {
+        "FOR": 16,
+        "DES": 14,
+        "CON": 15,
+        "INT": 13,
+        "SAB": 12,
+        "CAR": 10
+    },
+    "recursos": {
+        "pv": {
+            "atual": 32,
+            "maximo": 42,
+            "temporario": 0
+        },
+        "pm": {
+            "atual": 18,
+            "maximo": 25
+        },
+        "defesa": 14,
+        "deslocamento": 9,
+        "resistencias": {
+            "fortitude": 2,
+            "reflexos": 1,
+            "vontade": 0
+        }
+    },
+    "pericias": {
+        "Atletismo": 3,
+        "Luta": 4,
+        "Investigação": 2,
+        "Percepção": 1,
+        "Arcanismo": 2
+    },
+    "poderes": ["Ataque Extra (5º Nível)", "Defesa Inabalável", "Golpe Demolidor", "Segundo Vento"],
+    "magias": [
+        {
+            "nome": "Escudo Arcano",
+            "circulo": 1,
+            "custoPM": 2,
+            "descricao": "Protege contra dano arcano"
+        },
+        {
+            "nome": "Raio Violeta",
+            "circulo": 1,
+            "custoPM": 3,
+            "descricao": "Ataque mágico de dano elétrico"
+        },
+        {
+            "nome": "Imagem Fantasmagórica",
+            "circulo": 2,
+            "custoPM": 5,
+            "descricao": "Cria ilusões do usuário"
+        },
+        {
+            "nome": "Rajada de Vento",
+            "circulo": 2,
+            "custoPM": 4,
+            "descricao": "Ataque em área com vento"
+        }
+    ],
+    "inventario": [
+        {
+            "nome": "Espada Longa de Aço Mithril",
+            "quantidade": 1,
+            "raridade": "Raro",
+            "descricao": "Arma lendária forjada na época dourada"
+        },
+        {
+            "nome": "Escudo de Guerra Encantado",
+            "quantidade": 1,
+            "raridade": "Raro",
+            "descricao": "Defesa +2 contra magia"
+        },
+        {
+            "nome": "Poção de Cura Maior",
+            "quantidade": 3,
+            "raridade": "Incomum",
+            "descricao": "Recupera 4d4 + 4 PV"
+        },
+        {
+            "nome": "Mapa do Tesouro Perdido",
+            "quantidade": 1,
+            "raridade": "Lendário",
+            "descricao": "Leva ao tesouro da era antiga"
+        },
+        {
+            "nome": "Moedas de Ouro",
+            "quantidade": 450,
+            "raridade": "Comum",
+            "descricao": "Moeda corrente"
+        }
+    ],
+    "historia": {
+        "aparencia": "Um guerreiro esguio com cicatrizes de batalha, olhos que brilham com essência arcana. Cabelo negro ondulante.",
+        "anotacoes": "Sektor é um guerreiro que absorveu poderes arcanos em uma jornada mística. Busca vingar-se do senhor sombrio que matou seu mestre de armas. Companheiro leal da maga Lyra.",
+        "relacionamentos": [
+            {
+                "nome": "Lyra",
+                "tipo": "Companheira",
+                "confianca": 85
+            },
+            {
+                "nome": "Lord Malachar",
+                "tipo": "Inimigo",
+                "confianca": -100
+            }
+        ]
+    },
+    "status": [
+        {
+            "nome": "Inspirado",
+            "intensidade": 2,
+            "duracao": 3,
+            "descricao": "Inspiração divina aumenta habilidades",
+            "efeito": "+2 em testes de ataque"
+        }
+    ],
+    "ressonancia": {
+        "atual": 2500,
+        "proximo": 5000,
+        "total": 7500
+    },
+    "paginas": {
+        "total": 12,
+        "ultima_missao": "2025-12-10",
+        "proxima_disponivel": "2025-12-17"
+    },
+    "reacoes": [
+        {
+            "id": "contra-ataque",
+            "nome": "Contra-Ataque",
+            "descricao": "Responda a um ataque com um ataque próprio",
+            "acionador": "Quando um inimigo erra um ataque contra você",
+            "efeito": "Role um ataque contra o atacante",
+            "custo": { "tipo": "reacao", "valor": 1 },
+            "frequencia": "por-turno",
+            "usosRestantes": 1,
+            "nivel": 2
+        },
+        {
+            "id": "disparo-arcano",
+            "nome": "Disparo Arcano",
+            "descricao": "Lance uma magia rapidamente em resposta",
+            "acionador": "Quando um inimigo entra em seu alcance",
+            "efeito": "Conjura uma magia de até 1º círculo como reação",
+            "custo": { "tipo": "pm", "valor": 2 },
+            "frequencia": "por-turno",
+            "usosRestantes": 1,
+            "nivel": 4
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+
+> dev:npx
+> tsx --env-file .env ./src/index.ts
+
+Ôÿ░ Environment variables loaded Ô£ô
+[LazyLoader] Ô£à Modo otimizado: carregamento sob demanda
+[PROCESS] ­ƒÜÇ Iniciando main()...
+[32m[2025-12-13T02:37:40.260Z] [INFO] ­ƒùä´©Å Inicializando LocalDB (banco de dados local em JSON)...[0m
+[PROCESS] ÔÅ│ main() aguardando indefinidamente...
+[32m[2025-12-13T02:37:40.261Z] [INFO] Tentando conectar ao MongoDB {"uri":"carla.bwtqhco.mongodb.net/grimorio-corrupcao?retryWrites=true&w=majority&appName=CARLA","db":"grimorio-corrupcao","tls":true,"direct":false}[0m
+[32m[2025-12-13T02:37:40.646Z] [INFO] MongoDB conectado com sucesso {"duration":"385ms"}[0m
+[32m[2025-12-13T02:37:40.647Z] [INFO] Collections inicializadas {"count":7}[0m
+[32m[2025-12-13T02:37:40.647Z] [INFO] Ô£à Conectado ao MongoDB remoto[0m
+[32m[2025-12-13T02:37:40.647Z] [INFO] Ô£à LocalDB inicializado com sucesso[0m
+[Cache] Iniciando aquecimento de cache...
+[Cache] Compendium carregado em 0.81ms
+[LazyLoader] Pr├®-carregando: classes, racas
+[LazyLoader] Classes carregadas: 71 itens em 0.33ms
+[LazyLoader] Ra├ºas carregadas: 17 itens em 0.18ms
+[LazyLoader] Ô£à Pr├®-carregamento completo em 0.74ms
+[Cache] Acervo carregado em 0.01ms (88 entidades)
+[Cache] Ô£à Aquecimento completo em 1.95ms
+[Cache] 85 classes na mem├│ria
+[Cache] 34 ra├ºas na mem├│ria
+{/} Slash command > compendium_adicionar Ô£ô
+{/} Slash command > importar_canal Ô£ô
+{/} Slash command > acervo Ô£ô
+{/} Slash command > ajuda Ô£ô
+{/} Slash command > buscar Ô£ô
+{/} Slash command > compendium Ô£ô
+{/} Slash command > counter Ô£ô
+{/} Slash command > guild Ô£ô
+{/} Slash command > ping Ô£ô
+{/} Slash command > t20-roll Ô£ô
+{/} Slash command > rolar Ô£ô
+{/} Slash command > campanha Ô£ô
+{/} Slash command > compendium_buscar Ô£ô
+{/} Slash command > compendium_deletar Ô£ô
+{/} Slash command > compendium_listar Ô£ô
+{/} Slash command > acervo_setup Ô£ô
+{/} Slash command > acervo_publicar Ô£ô
+{/} Slash command > ficha Ô£ô
+{/} Slash command > criar Ô£ô
+Ôû© button > acervo_page/:categoria/:page Ô£ô
+Ôû© button > remind/:date Ô£ô
+Ôû© button > counter/:current Ô£ô
+Ôû© modal > criar_acervo_modal/:tipo/:nome Ô£ô
+Ôû© select.string > compendium_category_select Ô£ô
+Ôû© select.string > criar_deus_categoria_select/:nome Ô£ô
+Ôû© select.string > criar_item_categoria_select/:nome Ô£ô
+Ôû© select.string > criar_tipo_select/:nome/:origem/:raca/:classe Ô£ô
+Ôû© select.string > criar_poder_categoria_select/:nome Ô£ô
+Ôû© button > campanha_page/:userId/:page Ô£ô
+Ôû© modal > criar_campanha_modal/:nome Ô£ô
+Ôû© modal > editar_campanha_modal/:campaignId Ô£ô
+Ôû© button > compendium_list/:categoria/:page Ô£ô
+Ôû© modal > compendium_add_modal/:categoria/:nome Ô£ô
+Ôû© button > ficha_page/:userId/:page Ô£ô
+Ôû© modal > editar_ficha_modal/:characterId Ô£ô
+Ôû© select.string > ficha_menu/:personagemId Ô£ô
+Ôû© modal > criar_ficha_modal/:nome/:origem Ô£ô
+Ôÿë messageCreate > messageCreate event Ô£ô
+Ôÿë Error handler > error event Ô£ô
+
+Ôÿà Constatic Base 1.3.4
+Ôùî discord.js 14.22.1 | Ô¼ó Node.js 24.11.1
+[32m[2025-12-13T02:37:40.969Z] [INFO] Ô£à Bot inicializado e aguardando intera├º├Áes...[0m
+[32m[2025-12-13T02:37:42.229Z] [INFO] [Discord] Guilds conectadas (2): TesteServer (585893960309014551); O Grim├│rio da Corrup├º├úo (1386519240269631508)[0m
+ÔùÅ C.A.R.L.A. online Ô£ô
+Ôöö 19 commands successfully registered in TesteServer guild!
+[32m[2025-12-13T02:39:17.198Z] [INFO] Iniciando LocalDB...[0m
+[32m[2025-12-13T02:39:17.200Z] [INFO] Cole├º├úo carregada: users {"items":0}[0m
+[32m[2025-12-13T02:39:17.200Z] [INFO] Cole├º├úo carregada: characters {"items":1}[0m
+[32m[2025-12-13T02:39:17.200Z] [INFO] Cole├º├úo carregada: campaigns {"items":1}[0m
+[32m[2025-12-13T02:39:17.201Z] [INFO] Cole├º├úo carregada: compendium_races {"items":0}[0m
+[32m[2025-12-13T02:39:17.201Z] [INFO] Cole├º├úo carregada: compendium_classes {"items":0}[0m
+[32m[2025-12-13T02:39:17.201Z] [INFO] Cole├º├úo carregada: compendium_powers {"items":0}[0m
+[32m[2025-12-13T02:39:17.201Z] [INFO] Cole├º├úo carregada: compendium_spells {"items":0}[0m
+[32m[2025-12-13T02:39:17.202Z] [INFO] Cole├º├úo carregada: compendium_items {"items":0}[0m
+[32m[2025-12-13T02:39:17.202Z] [INFO] LocalDB inicializado com sucesso {"collections":8,"dataDir":"C:\\Users\\dayse\\OneDrive\\├ürea de Trabalho\\Lab da Day\\Discord Bot\\data\\localdb"}[0m

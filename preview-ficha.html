@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>🧿 Preview da Ficha — A Sombra Escaroluz</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                background: linear-gradient(135deg, #1a0033 0%, #2d1b69 50%, #1a0033 100%);
+                color: #fff;
+                padding: 2rem;
+                min-height: 100vh;
+            }
+
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 2rem;
+                color: #d946ef;
+                text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+                font-size: 1.8rem;
+            }
+
+            .tabs {
+                display: flex;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .tab-btn {
+                padding: 0.5rem 1rem;
+                border: 2px solid #d946ef;
+                background: rgba(217, 70, 239, 0.1);
+                color: #d946ef;
+                cursor: pointer;
+                border-radius: 4px;
+                font-weight: bold;
+                transition: all 0.3s;
+                font-size: 0.85rem;
+            }
+
+            .tab-btn:hover {
+                background: rgba(217, 70, 239, 0.3);
+                transform: translateY(-2px);
+            }
+
+            .tab-btn.active {
+                background: #d946ef;
+                color: #1a0033;
+            }
+
+            .embed {
+                background: linear-gradient(135deg, #2d1b69 0%, #3d2580 100%);
+                border-left: 4px solid #d946ef;
+                border-radius: 4px;
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
+                display: none;
+            }
+
+            .embed.active {
+                display: block;
+                animation: fadeIn 0.3s;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .embed-title {
+                font-size: 1.4rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                color: #d946ef;
+            }
+
+            .embed-desc {
+                font-size: 0.95rem;
+                color: #b8a5d1;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+
+            .field {
+                margin-bottom: 1rem;
+            }
+
+            .field-name {
+                font-weight: bold;
+                color: #ba68c8;
+                font-size: 0.9rem;
+            }
+
+            .field-value {
+                color: #e0d5f7;
+                font-size: 0.9rem;
+                margin-top: 0.3rem;
+                font-family: "Courier New", monospace;
+                word-break: break-word;
+            }
+
+            .field-inline {
+                display: inline-block;
+                width: calc(50% - 0.5rem);
+                margin-right: 1rem;
+                vertical-align: top;
+            }
+
+            .field-inline:nth-child(even) {
+                margin-right: 0;
+            }
+
+            .attributes {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .attr {
+                background: rgba(217, 70, 239, 0.1);
+                padding: 0.8rem;
+                border-radius: 4px;
+                text-align: center;
+                border: 1px solid rgba(217, 70, 239, 0.3);
+            }
+
+            .attr-name {
+                font-weight: bold;
+                color: #ba68c8;
+                font-size: 0.85rem;
+            }
+
+            .attr-value {
+                font-size: 1.2rem;
+                color: #d946ef;
+                margin-top: 0.3rem;
+            }
+
+            .bar {
+                background: rgba(0, 0, 0, 0.3);
+                height: 8px;
+                border-radius: 2px;
+                overflow: hidden;
+                margin-top: 0.3rem;
+            }
+
+            .bar-fill {
+                height: 100%;
+                background: linear-gradient(90deg, #d946ef, #e91e63);
+                transition: width 0.3s;
+            }
+
+            .embed-footer {
+                font-size: 0.8rem;
+                color: #9c7eb8;
+                margin-top: 1rem;
+                border-top: 1px solid rgba(217, 70, 239, 0.2);
+                padding-top: 0.8rem;
+            }
+
+            .magia-list {
+                list-style: none;
+            }
+
+            .magia-item {
+                padding: 0.6rem 0;
+                border-bottom: 1px solid rgba(217, 70, 239, 0.1);
+                color: #e0d5f7;
+            }
+
+            .magia-item:last-child {
+                border-bottom: none;
+            }
+
+            .magia-name {
+                font-weight: bold;
+                color: #ba68c8;
+            }
+
+            .magia-info {
+                font-size: 0.85rem;
+                color: #9c7eb8;
+            }
+
+            .item-list {
+                list-style: none;
+            }
+
+            .item {
+                padding: 0.8rem;
+                background: rgba(217, 70, 239, 0.05);
+                border-radius: 4px;
+                margin-bottom: 0.6rem;
+                border-left: 3px solid #ba68c8;
+            }
+
+            .item-name {
+                font-weight: bold;
+                color: #d946ef;
+            }
+
+            .item-rare {
+                font-size: 0.8rem;
+                color: #9c7eb8;
+            }
+
+            .item-desc {
+                font-size: 0.85rem;
+                color: #b8a5d1;
+                margin-top: 0.3rem;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🧿 Sektor da Noite — A Sombra Escaroluz</h1>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab(0)">📜 Geral</button>
+                <button class="tab-btn" onclick="showTab(1)">⚔️ Combate</button>
+                <button class="tab-btn" onclick="showTab(2)">🎯 Perícias</button>
+                <button class="tab-btn" onclick="showTab(3)">✨ Poderes</button>
+                <button class="tab-btn" onclick="showTab(4)">📖 Magias</button>
+                <button class="tab-btn" onclick="showTab(5)">🎒 Inventário</button>
+                <button class="tab-btn" onclick="showTab(6)">📝 História</button>
+            </div>
+
+            <!-- ABA 1: GERAL -->
+            <div class="embed active">
+                <div class="embed-title">🧿 Sektor da Noite — A Sombra Escaroluz</div>
+                <div class="embed-desc">
+                    <strong>Humano</strong> • Guerreiro Arcano • Nível <strong>5</strong
+                    ><br /><br /><em
+                        >Um guerreiro esguio com cicatrizes de batalha, olhos que brilham com
+                        essência arcana. Cabelo negro ondulante.</em
+                    >
+                </div>
+
+                <div class="field">
+                    <div class="field-name">💠 ATRIBUTOS</div>
+                    <div class="field-value">Valores que importam em Tormenta 20</div>
+                </div>
+
+                <div class="attributes">
+                    <div class="attr">
+                        <div class="attr-name">FOR</div>
+                        <div class="attr-value">✨ `+3`</div>
+                    </div>
+                    <div class="attr">
+                        <div class="attr-name">DES</div>
+                        <div class="attr-value">✨ `+2`</div>
+                    </div>
+                    <div class="attr">
+                        <div class="attr-name">CON</div>
+                        <div class="attr-value">✨ `+2`</div>
+                    </div>
+                    <div class="attr">
+                        <div class="attr-name">INT</div>
+                        <div class="attr-value">🧿 `+1`</div>
+                    </div>
+                    <div class="attr">
+                        <div class="attr-name">SAB</div>
+                        <div class="attr-value">🧿 `+1`</div>
+                    </div>
+                    <div class="attr">
+                        <div class="attr-name">CAR</div>
+                        <div class="attr-value">💔 `+0`</div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-name">❤️ VITALIDADE</div>
+                    <div class="field-value">`32/42` PV ▓▓▓▓▓▓▓░░░</div>
+                    <div class="bar">
+                        <div class="bar-fill" style="width: 76%"></div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-name">✨ MANA</div>
+                    <div class="field-value">`18/25` PM ▓▓▓▓▓▓▓░░░</div>
+                    <div class="bar">
+                        <div class="bar-fill" style="width: 72%"></div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-name">⚔️ COMBATE</div>
+                    <div class="field-value">Defesa `14` | Desl. `9m`</div>
+                </div>
+
+                <div class="embed-footer">🧿 Use o menu para navegar | Aba 1/7</div>
+            </div>
+
+            <!-- ABA 2: COMBATE -->
+            <div class="embed">
+                <div class="embed-title">⚔️ Sektor da Noite — Combate</div>
+                <div class="embed-desc"><strong>Humano</strong> • Guerreiro Arcano</div>
+
+                <div class="field">
+                    <div class="field-name">❤️ VITALIDADE</div>
+                    <div class="field-value">`32/42` PV<br />▓▓▓▓▓▓▓░░░</div>
+                </div>
+
+                <div class="field">
+                    <div class="field-name">✨ MANA</div>
+                    <div class="field-value">`18/25` PM<br />▓▓▓▓▓▓▓░░░</div>
+                </div>
+
+                <div class="field-inline">
+                    <div class="field-name">🛡️ DEFESA</div>
+                    <div class="field-value">`14`</div>
+                </div>
+                <div class="field-inline">
+                    <div class="field-name">👣 DESLOCAMENTO</div>
+                    <div class="field-value">`9m`</div>
+                </div>
+
+                <div class="field" style="clear: both">
+                    <div class="field-name">🧿 RESISTÊNCIAS</div>
+                    <div class="field-value">
+                        <strong>Fort.</strong> `+2` | <strong>Refl.</strong> `+1` |
+                        <strong>Von.</strong> `+0`
+                    </div>
+                </div>
+
+                <div class="embed-footer">⚔️ Use o menu para navegar | Aba 2/7</div>
+            </div>
+
+            <!-- ABA 3: PERÍCIAS -->
+            <div class="embed">
+                <div class="embed-title">🎯 Sektor da Noite — Perícias</div>
+                <div class="field-value">
+                    🔍 <strong>Luta</strong> — `+4`<br />
+                    🔍 <strong>Atletismo</strong> — `+3`<br />
+                    🔍 <strong>Arcanismo</strong> — `+2`<br />
+                    🔍 <strong>Investigação</strong> — `+2`<br />
+                    🔍 <strong>Percepção</strong> — `+1`
+                </div>
+
+                <div class="field">
+                    <div class="field-name">📚 Conhecimento Arcano</div>
+                    <div class="field-value">Perícias que seu personagem domina.</div>
+                </div>
+
+                <div class="embed-footer">🎯 Use o menu para navegar | Aba 3/7 • 5 perícia(s)</div>
+            </div>
+
+            <!-- ABA 4: PODERES -->
+            <div class="embed">
+                <div class="embed-title">✨ Sektor da Noite — Poderes</div>
+                <div class="field-value">
+                    1. ✨ <strong>Ataque Extra (5º Nível)</strong><br />
+                    2. ✨ <strong>Defesa Inabalável</strong><br />
+                    3. ✨ <strong>Golpe Demolidor</strong><br />
+                    4. ✨ <strong>Segundo Vento</strong>
+                </div>
+
+                <div class="field">
+                    <div class="field-name">🔮 Manifestações Arcanas</div>
+                    <div class="field-value">Habilidades especiais da sua classe e raça.</div>
+                </div>
+
+                <div class="embed-footer">✨ Use o menu para navegar | Aba 4/7 • 4 poder(es)</div>
+            </div>
+
+            <!-- ABA 5: MAGIAS -->
+            <div class="embed">
+                <div class="embed-title">📖 Sektor da Noite — Grimório</div>
+                <ul class="magia-list">
+                    <li class="magia-item">
+                        1. 🔮 <span class="magia-name">Escudo Arcano</span>
+                        <div class="magia-info">(Círculo 1) — `2 PM`</div>
+                    </li>
+                    <li class="magia-item">
+                        2. 🔮 <span class="magia-name">Raio Violeta</span>
+                        <div class="magia-info">(Círculo 1) — `3 PM`</div>
+                    </li>
+                    <li class="magia-item">
+                        3. 🔮 <span class="magia-name">Imagem Fantasmagórica</span>
+                        <div class="magia-info">(Círculo 2) — `5 PM`</div>
+                    </li>
+                    <li class="magia-item">
+                        4. 🔮 <span class="magia-name">Rajada de Vento</span>
+                        <div class="magia-info">(Círculo 2) — `4 PM`</div>
+                    </li>
+                </ul>
+
+                <div class="field">
+                    <div class="field-name">✨ Fluxo Arcano</div>
+                    <div class="field-value">`18/25` PM ▓▓▓▓▓▓▓░░░</div>
+                </div>
+
+                <div class="embed-footer">📖 Use o menu para navegar | Aba 5/7 • 4 magia(s)</div>
+            </div>
+
+            <!-- ABA 6: INVENTÁRIO -->
+            <div class="embed">
+                <div class="embed-title">🎒 Sektor da Noite — Inventário</div>
+                <ul class="item-list">
+                    <li class="item">
+                        <div class="item-name">🌠 Espada Longa de Aço Mithril</div>
+                        <div class="item-rare">Raro ×1</div>
+                        <div class="item-desc">Arma lendária forjada na época dourada</div>
+                    </li>
+                    <li class="item">
+                        <div class="item-name">💎 Escudo de Guerra Encantado</div>
+                        <div class="item-rare">Raro ×1</div>
+                        <div class="item-desc">Defesa +2 contra magia</div>
+                    </li>
+                    <li class="item">
+                        <div class="item-name">✨ Poção de Cura Maior</div>
+                        <div class="item-rare">Incomum ×3</div>
+                        <div class="item-desc">Recupera 4d4 + 4 PV</div>
+                    </li>
+                    <li class="item">
+                        <div class="item-name">🌠 Mapa do Tesouro Perdido</div>
+                        <div class="item-rare">Lendário ×1</div>
+                        <div class="item-desc">Leva ao tesouro da era antiga</div>
+                    </li>
+                    <li class="item">
+                        <div class="item-name">⭕ Moedas de Ouro</div>
+                        <div class="item-rare">Comum ×450</div>
+                        <div class="item-desc">Moeda corrente</div>
+                    </li>
+                </ul>
+
+                <div class="field">
+                    <div class="field-name">📦 Carga</div>
+                    <div class="field-value">5 item(ns) carregado(s)</div>
+                </div>
+
+                <div class="embed-footer">🎒 Use o menu para navegar | Aba 6/7</div>
+            </div>
+
+            <!-- ABA 7: HISTÓRIA -->
+            <div class="embed">
+                <div class="embed-title">📝 Sektor da Noite — História</div>
+                <div class="embed-desc">
+                    Sektor é um guerreiro que absorveu poderes arcanos em uma jornada mística. Busca
+                    vingar-se do senhor sombrio que matou seu mestre de armas. Companheiro leal da
+                    maga Lyra.
+                </div>
+
+                <div class="field">
+                    <div class="field-name">📅 Cronologia</div>
+                    <div class="field-value">
+                        Criada: `10/12/2025`<br />Última edição: `11/12/2025`
+                    </div>
+                </div>
+
+                <div class="embed-footer">📝 Use o menu para navegar | Aba 7/7</div>
+            </div>
+        </div>
+
+        <script>
+            function showTab(index) {
+                const embeds = document.querySelectorAll(".embed");
+                const buttons = document.querySelectorAll(".tab-btn");
+
+                embeds.forEach((embed, i) => {
+                    embed.classList.toggle("active", i === index);
+                });
+
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle("active", i === index);
+                });
+            }
+        </script>
+    </body>
+</html>
