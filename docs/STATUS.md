@@ -177,7 +177,7 @@
 npm install
 
 # 2. Configurar .env
-# Adicionar MONGODB_URI, BOT_TOKEN, etc
+# Adicionar MONGODB_URI, DISCORD_TOKEN, etc
 
 # 3. Build
 npm run build
