@@ -2,11 +2,11 @@
  * Responder para menu de seleção de abas de ficha
  * Interface mais bonita e prática que botões
  */
-import { createResponder, ResponderType } from "#base";
 import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js";
 import { CharacterRepository } from "../../../database/CharacterRepository.js";
 import { criarCombateCard, criarPericiasCard, criarProfileCard, } from "../../../ui/cards/profileCard.js";
 import { criarEmbedErro, criarEmbedGeralFicha, criarEmbedInventarioFicha, criarEmbedMagiasFicha, criarEmbedNotasFicha, criarEmbedPoderesFicha, criarEmbedReacoesFicha, criarEmbedStatusFicha, criarEmbedXPFicha, } from "../../../ui/embeds/fichaEmbeds.js";
+import { createResponder, ResponderType } from "../../base/index.js";
 // Mapeamento de abas para funções de embed
 const embedFunctions = {
     profile: criarProfileCard, // Novo card visual

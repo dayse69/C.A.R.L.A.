@@ -2,10 +2,10 @@
  * Responder para select menu do Acervo do Golem
  * Exibe dados do compêndio de Tormenta 20
  */
-import { createResponder, ResponderType } from "#base";
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, } from "discord.js";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { createResponder, ResponderType } from "../../base/index.js";
 // Carregar dados do acervo
 function carregarAcervo() {
     try {

@@ -3,7 +3,6 @@
  * Exibe dados do compêndio de Tormenta 20
  */
 
-import { createResponder, ResponderType } from "#base";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -13,6 +12,7 @@ import {
 } from "discord.js";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { createResponder, ResponderType } from "../../base/index.js";
 
 // Carregar dados do acervo
 function carregarAcervo() {
@@ -151,7 +151,9 @@ function criarEmbedClasses(classes: any[], page: number = 0) {
                 "Conheça as classes principais do sistema Tormenta 20.\n"
         )
         .setFooter({
-            text: `C.A.R.L.A // ${classes.length} classes catalogadas | Página ${currentPage + 1}/${totalPages}`,
+            text: `C.A.R.L.A // ${classes.length} classes catalogadas | Página ${
+                currentPage + 1
+            }/${totalPages}`,
         })
         .setTimestamp();
 
@@ -159,7 +161,9 @@ function criarEmbedClasses(classes: any[], page: number = 0) {
     pageItems.forEach((classe) => {
         embed.addFields({
             name: `⚔️ ${classe.nome}`,
-            value: `${classe.descricao}\n**PV Base:** ${classe.pv_base || "N/A"}${classe.pm_base ? ` | **PM Base:** ${classe.pm_base}` : ""}`,
+            value: `${classe.descricao}\n**PV Base:** ${classe.pv_base || "N/A"}${
+                classe.pm_base ? ` | **PM Base:** ${classe.pm_base}` : ""
+            }`,
             inline: false,
         });
     });
@@ -192,14 +196,18 @@ function criarEmbedClassesAlternativas(classes: any[], page: number = 0) {
                 "Caminhos alternativos e especializações avançadas.\n"
         )
         .setFooter({
-            text: `C.A.R.L.A // ${classes.length} especializações catalogadas | Página ${currentPage + 1}/${totalPages}`,
+            text: `C.A.R.L.A // ${classes.length} especializações catalogadas | Página ${
+                currentPage + 1
+            }/${totalPages}`,
         })
         .setTimestamp();
 
     pageItems.forEach((classe) => {
         embed.addFields({
             name: `🎭 ${classe.nome}`,
-            value: `${classe.descricao}\n**PV Base:** ${classe.pv_base || "N/A"}${classe.pm_base ? ` | **PM Base:** ${classe.pm_base}` : ""}`,
+            value: `${classe.descricao}\n**PV Base:** ${classe.pv_base || "N/A"}${
+                classe.pm_base ? ` | **PM Base:** ${classe.pm_base}` : ""
+            }`,
             inline: false,
         });
     });
@@ -288,7 +296,9 @@ function criarEmbedDeuses(deuses: any[], tipo: string) {
     deuses.slice(0, 10).forEach((deus) => {
         embed.addFields({
             name: `${emoji} ${deus.nome}`,
-            value: `${deus.descricao}\n**Domínio:** ${deus.dominio || "N/A"}\n**Alinhamento:** ${deus.alinhamento || "N/A"}`,
+            value: `${deus.descricao}\n**Domínio:** ${deus.dominio || "N/A"}\n**Alinhamento:** ${
+                deus.alinhamento || "N/A"
+            }`,
             inline: false,
         });
     });

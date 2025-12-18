@@ -2,6 +2,7 @@
  * Database Seed Service
  * Popula o banco com dados iniciais
  */
+import { logger } from "../utils/logger.js";
 import { getCollections, isConnected } from "./mongodb.js";
 export class DatabaseSeeder {
     /**

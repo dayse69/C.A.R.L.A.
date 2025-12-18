@@ -24,6 +24,13 @@ createCommand({
     async run(interaction) {
         const targetChannel = interaction.options.getChannel("canal", true);
         const categoryName = interaction.options.getString("categoria", true);
+        if (!hasPermission(interaction.member, PermissionFlagsBits.Administrator)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: Administrator",
+                ephemeral: true,
+            });
+            return;
+        }
         if (!targetChannel.isTextBased()) {
             await interaction.reply({
                 content: "❌ Selecione um canal de texto válido.",
@@ -46,7 +53,9 @@ createCommand({
             }
             saveImportedData(categoryName, entries);
             await interaction.followUp({
-                content: `✅ Importação concluída!\n• Categoria: \`${categoryName}\`\n• Entradas: ${entries.length}\n• Arquivo: \`compendium_${categoryName.toLowerCase().replace(/\\s+/g, "_")}.json\``,
+                content: `✅ Importação concluída!\n• Categoria: \`${categoryName}\`\n• Entradas: ${entries.length}\n• Arquivo: \`compendium_${categoryName
+                    .toLowerCase()
+                    .replace(/\\s+/g, "_")}.json\``,
                 ephemeral: true,
             });
         }

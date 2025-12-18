@@ -2,10 +2,10 @@
  * LocalDB - Sistema de Banco de Dados Local em JSON
  * Alternativa leve ao MongoDB usando arquivos JSON estruturados
  */
-import { logger } from "#utils/logger";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { logger } from "../utils/logger.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, "../../data/localdb");
 class LocalDB {

@@ -1,12 +1,13 @@
+import { logger } from "../utils/logger.js";
 /**
  * Carregador de compêndio do Tormenta 20
  * Importa dados de classes, raças, magias do JSON
  */
-import { loadImportedCategory } from "#services/channelImporterService";
-import { lazyLoader } from "#services/lazyCompendiumLoader";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { loadImportedCategory } from "./channelImporterService.js";
+import { lazyLoader } from "./lazyCompendiumLoader.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let compendiumCache = null;
 let acervoCache = null;

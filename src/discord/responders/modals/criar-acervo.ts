@@ -1,9 +1,9 @@
 import { createResponder, ResponderType } from "#base";
 import { env } from "#env";
-import { hasAdminOrManageGuild } from "#utils/permissions";
 import { EmbedBuilder } from "discord.js";
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import { hasAdminOrManageGuild } from "../../../utils/permissions.js";
 
 function loadAcervo() {
     const p = join(process.cwd(), "data", "compendium", "acervo-do-golem.json");

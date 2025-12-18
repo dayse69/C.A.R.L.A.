@@ -1,5 +1,5 @@
-import { createResponder, ResponderType } from "#base";
 import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
+import { createResponder, ResponderType } from "../../base/index.js";
 createResponder({
     customId: "criar_deus_categoria_select/:nome",
     types: [ResponderType.StringSelect],

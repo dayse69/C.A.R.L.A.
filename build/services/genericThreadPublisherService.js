@@ -1,4 +1,5 @@
 import { EmbedBuilder } from "discord.js";
+import { logger } from "../utils/logger.js";
 /**
  * Formata características de uma entrada em embeds, adaptadas por categoria
  */

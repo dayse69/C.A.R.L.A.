@@ -1,3 +1,4 @@
+import { logger } from "../utils/logger.js";
 /**
  * Script de teste para verificar a nova organização de classes
  */

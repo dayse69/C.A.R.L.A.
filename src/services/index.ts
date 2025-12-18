@@ -3,14 +3,14 @@
  * Centraliza exports de todos os serviços
  */
 
-export * from "./acervoPublisherService";
-export * from "./channelImporterService";
-export * from "./classThreadPublisherService";
-export * from "./compendiumManagerService";
-export * from "./compendiumService";
-export * from "./fichaService";
-export * from "./genericThreadPublisherService";
-export * from "./lazyCompendiumLoader";
-export * from "./pdfParserService";
-export * from "./reacoesService";
-export * from "./rollService";
+export * from "./acervoPublisherService.js";
+export * from "./channelImporterService.js";
+export * from "./classThreadPublisherService.js";
+export * from "./compendiumManagerService.js";
+export * from "./compendiumService.js";
+export * from "./fichaService.js";
+export * from "./genericThreadPublisherService.js";
+export * from "./lazyCompendiumLoader.js";
+export * from "./pdfParserService.js";
+export * from "./reacoesService.js";
+export * from "./rollService.js";

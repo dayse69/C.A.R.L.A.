@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import { logger } from "../utils/logger.js";
 
 /**
  * Detecta o subtipo de poder baseado em seu nome e conteúdo

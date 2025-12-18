@@ -162,7 +162,7 @@ command.subcommand({
                 .setMaxLength(40)
                 .setRequired(false)
                 .setValue(
-                    personagem.classe ||
+                    personagem.classes ||
                         (Array.isArray(personagem.classes)
                             ? personagem.classes.map((c: any) => c.nome).join("/")
                             : "")

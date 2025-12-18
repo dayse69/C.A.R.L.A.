@@ -1,13 +1,12 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
 import { runImport } from "../../../tools/importTxt.js";
+import { hasPermission } from "../../../utils/permissions.js";
 export const data = new SlashCommandBuilder()
     .setName("importar")
     .setDescription("Executa a importação de TXT/PDF para o Acervo do Golem (admin)");
 export async function execute(interaction) {
     const member = interaction.member;
-    const isAdmin = interaction.memberPermissions?.has("Administrator") ||
-        member?.permissions?.has?.("Administrator");
-    if (!isAdmin) {
+    if (!hasPermission(member, PermissionFlagsBits.Administrator)) {
         return interaction.reply({
             content: "❌ Permissão necessária: Administrator",
             ephemeral: true,

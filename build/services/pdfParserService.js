@@ -1,9 +1,4 @@
-/**
- * Parser de PDF para Fichas Tormenta 20
- * Extrai dados de PDFs de ficha e converte para o formato JSON do bot
- *
- * Nota: Para usar PDFs reais, instale: npm i pdf-parse @types/pdf-parse
- */
+import { logger } from "../utils/logger.js";
 /**
  * Extrai texto de um PDF (requer pdf-parse instalado)
  */

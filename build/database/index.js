@@ -1,9 +1,16 @@
-/**
- * Database Adapter - Seleciona entre MongoDB e LocalDB automaticamente
- */
-import localdb from "#database/localdb";
+// Barrel export para Database
+export * from "./CampaignRepository.js";
+export * from "./CharacterRepository.js";
+export * from "./CompendiumRepository.js";
+export * from "./DatabaseIndexes.js";
+export * from "./DatabaseSeeder.js";
+export * from "./localdb.js";
+// export * from "./models.js"; // Removido para evitar ambiguidade de 'Item'
+export * from "./mongodb.js";
+// Database Adapter - Seleciona entre MongoDB e LocalDB automaticamente
 import { env } from "#env";
-import { logger } from "#utils/logger";
+import { logger } from "../utils/logger.js";
+import localdb from "./localdb.js";
 let useLocalDB = false;
 let isConnected = false;
 /**

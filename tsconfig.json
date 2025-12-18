@@ -9,19 +9,7 @@
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "skipLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "#base": ["src/discord/base/index"],
-            "#base/*": ["src/discord/base/*"],
-            "#utils": ["src/utils/index"],
-            "#utils/*": ["src/utils/*"],
-            "#services": ["src/services/index"],
-            "#services/*": ["src/services/*"],
-            "#database": ["src/database/index"],
-            "#database/*": ["src/database/*"],
-            "#tools": ["src/tools/*"],
-            "#types": ["src/types/*"]
-        }
+        "ignoreDeprecations": "6.0"
     },
     "include": ["src"],
     "exclude": ["node_modules", "build"]

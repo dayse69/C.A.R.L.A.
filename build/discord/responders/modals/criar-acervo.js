@@ -1,8 +1,9 @@
 import { createResponder, ResponderType } from "#base";
 import { env } from "#env";
-import { EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { EmbedBuilder } from "discord.js";
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import { hasAdminOrManageGuild } from "../../../utils/permissions.js";
 function loadAcervo() {
     const p = join(process.cwd(), "data", "compendium", "acervo-do-golem.json");
     return { path: p, json: JSON.parse(readFileSync(p, "utf-8")) };
@@ -50,9 +51,7 @@ createResponder({
             .map((s) => s.trim())
             .filter(Boolean);
         const isAllowedUser = userIds.includes(interaction.user.id);
-        const hasPerms = interaction.inGuild()
-            ? interaction.memberPermissions?.has(PermissionFlagsBits.Administrator | PermissionFlagsBits.ManageGuild)
-            : false;
+        const hasPerms = interaction.inGuild() ? hasAdminOrManageGuild(interaction.member) : false;
         const hasAllowedRole = interaction.inGuild()
             ? roleIds.some((rid) => interaction.member?.roles &&
                 interaction.member.roles.cache?.has?.(rid))

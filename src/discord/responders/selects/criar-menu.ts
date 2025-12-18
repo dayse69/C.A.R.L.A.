@@ -3,7 +3,6 @@
  * Processa a seleção do tipo de criação
  */
 
-import { createResponder, ResponderType } from "#base";
 import {
     ActionRowBuilder,
     EmbedBuilder,
@@ -12,6 +11,7 @@ import {
     TextInputBuilder,
     TextInputStyle,
 } from "discord.js";
+import { createResponder, ResponderType } from "../../base/index.js";
 
 function buildAcervoModal(tipo: string, nome: string, titulo: string) {
     const modal = new ModalBuilder()
@@ -86,7 +86,9 @@ createResponder({
                     const tCamp = Date.now();
                     await handleCriarCampanha(interaction, nome);
                     console.log(
-                        `🎯 [CRIAR-MENU] → Modal shown for campanha (elapsed ${Date.now() - tCamp}ms)`
+                        `🎯 [CRIAR-MENU] → Modal shown for campanha (elapsed ${
+                            Date.now() - tCamp
+                        }ms)`
                     );
                     break;
                 case "acervo_poder": {

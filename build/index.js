@@ -1,9 +1,9 @@
-import { bootstrap } from "#base";
-import { connectDatabase as connectDatabaseAdapter } from "#database";
-import { warmUpCache } from "#services/compendiumService";
-import { setupErrorHandlers } from "#utils/errorHandler";
-import { logger } from "#utils/logger";
 import "dotenv/config";
+import { bootstrap } from "./base/index.js";
+import { connectDatabase as connectDatabaseAdapter } from "./database/index.js";
+import { warmUpCache } from "./services/compendiumService.js";
+import { setupErrorHandlers } from "./utils/errorHandler.js";
+import { logger } from "./utils/logger.js";
 // Setup global error handlers (sem process.exit)
 setupErrorHandlers();
 // Função principal async

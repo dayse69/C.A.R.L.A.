@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, statSync, writeFileSync } from "fs";
 import { join } from "path";
+import { logger } from "../utils/logger.js";
 let pdfParse = null;
 try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires

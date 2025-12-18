@@ -12,6 +12,7 @@ import {
     getImportedCategory,
 } from "../../../services/compendiumService.js";
 import { publishAllEntriesToThreads } from "../../../services/genericThreadPublisherService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 async function publishCategoria(categoria: string, channel: any, delayMs: number) {
     let items: any[] = [];
@@ -34,7 +35,9 @@ async function publishCategoria(categoria: string, channel: any, delayMs: number
 
     // Todas as categorias usam sistema de threads
     await channel.send({
-        content: `━━━━━━━━━━━━━━━━━━━━\n📚 Publicação do Acervo: ${categoria.toUpperCase()}\nTotal: ${items.length} entradas\nModo: Tópicos (Um tópico por entrada)\n━━━━━━━━━━━━━━━━━━━━`,
+        content: `━━━━━━━━━━━━━━━━━━━━\n📚 Publicação do Acervo: ${categoria.toUpperCase()}\nTotal: ${
+            items.length
+        } entradas\nModo: Tópicos (Um tópico por entrada)\n━━━━━━━━━━━━━━━━━━━━`,
     });
 
     await publishAllEntriesToThreads(channel, categoria, items, delayMs);
@@ -95,6 +98,14 @@ createCommand({
         const targetChannel = interaction.options.getChannel("canal", true);
         const categoria = interaction.options.getString("categoria", true);
         const intervalo = interaction.options.getInteger("intervalo_ms") ?? 750;
+
+        if (!hasPermission(interaction.member, PermissionFlagsBits.ManageGuild)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: ManageGuild",
+                ephemeral: true,
+            });
+            return;
+        }
 
         if (!targetChannel || targetChannel.type !== ChannelType.GuildText) {
             await interaction.reply({

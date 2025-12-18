@@ -3,7 +3,6 @@
  * Interface mais bonita e prática que botões
  */
 
-import { createResponder, ResponderType } from "#base";
 import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js";
 import { CharacterRepository } from "../../../database/CharacterRepository.js";
 import {
@@ -22,6 +21,7 @@ import {
     criarEmbedStatusFicha,
     criarEmbedXPFicha,
 } from "../../../ui/embeds/fichaEmbeds.js";
+import { createResponder, ResponderType } from "../../base/index.js";
 
 // Mapeamento de abas para funções de embed
 const embedFunctions = {

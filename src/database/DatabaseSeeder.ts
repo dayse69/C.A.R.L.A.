@@ -3,6 +3,7 @@
  * Popula o banco com dados iniciais
  */
 
+import { logger } from "../utils/logger.js";
 import { CharacterClass, Item, Power, Race, Spell } from "./models.js";
 import { getCollections, isConnected } from "./mongodb.js";
 

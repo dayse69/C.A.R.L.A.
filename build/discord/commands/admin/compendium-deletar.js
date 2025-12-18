@@ -1,6 +1,7 @@
 import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType, EmbedBuilder, PermissionFlagsBits, } from "discord.js";
 import { compendiumManager } from "../../../services/compendiumManagerService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 createCommand({
     name: "compendium_deletar",
     description: "Deleta uma entrada do Compêndio",
@@ -39,6 +40,13 @@ createCommand({
     async run(interaction) {
         const categoria = interaction.options.getString("categoria", true);
         const nome = interaction.options.getString("nome", true);
+        if (!hasPermission(interaction.member, PermissionFlagsBits.Administrator)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: Administrator",
+                ephemeral: true,
+            });
+            return;
+        }
         try {
             const deleted = compendiumManager.deleteEntry(categoria, nome);
             if (!deleted) {

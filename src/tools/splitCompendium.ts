@@ -1,3 +1,4 @@
+import { logger } from "../utils/logger.js";
 /**
  * Script para separar acervo-do-golem.json em arquivos menores
  * Reduz I/O e melhora performance de carregamento

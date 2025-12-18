@@ -1,6 +1,7 @@
 import { createCommand } from "#base";
 import { ActionRowBuilder, ApplicationCommandOptionType, ApplicationCommandType, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionFlagsBits, } from "discord.js";
 import { compendiumManager } from "../../../services/compendiumManagerService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 createCommand({
     name: "compendium_listar",
     description: "Lista entradas do Compêndio com paginação",
@@ -39,6 +40,13 @@ createCommand({
     async run(interaction) {
         const categoria = interaction.options.getString("categoria", true);
         const page = interaction.options.getInteger("pagina") || 1;
+        if (!hasPermission(interaction.member, PermissionFlagsBits.ManageMessages)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: ManageMessages",
+                ephemeral: true,
+            });
+            return;
+        }
         try {
             const result = compendiumManager.listEntries(categoria, page, 5);
             if (result.entries.length === 0) {

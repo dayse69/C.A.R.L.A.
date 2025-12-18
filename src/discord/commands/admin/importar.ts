@@ -1,6 +1,6 @@
-import { hasPermission } from "#utils/permissions";
 import { EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
 import { runImport } from "../../../tools/importTxt.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 export const data = new SlashCommandBuilder()
     .setName("importar")

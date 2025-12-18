@@ -4,13 +4,10 @@
  */
 
 // Embeds
-export * from "./embeds/fichaEmbeds";
+export * from "./embeds/fichaEmbeds.js";
 
 // Cards
-export * from "./cards/profileCard";
-
+export * from "./cards/profileCard.js";
 // Menus (futuro)
-// export * from "./menus/algumMenu";
-
-// Modals (futuro)
-// export * from "./modals/algumModal";
+// export * from "./menus/algumMenu.js";
+// export * from "./modals/algumModal.js";

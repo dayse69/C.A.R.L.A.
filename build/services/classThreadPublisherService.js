@@ -1,4 +1,5 @@
 import { EmbedBuilder } from "discord.js";
+import { logger } from "../utils/logger.js";
 /**
  * Formata características de uma classe em embeds detalhadas para thread
  */

@@ -1,5 +1,4 @@
 import { createCommand } from "#base";
-import { hasPermission } from "#utils/permissions";
 import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
@@ -10,6 +9,7 @@ import {
     PermissionFlagsBits,
 } from "discord.js";
 import { compendiumManager } from "../../../services/compendiumManagerService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 createCommand({
     name: "compendium_listar",

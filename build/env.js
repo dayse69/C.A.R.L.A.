@@ -1,7 +1,7 @@
-import { validateEnv } from "#base";
 import { z } from "zod";
+import { validateEnv } from "./base/index.js";
 export const env = validateEnv(z.object({
-    BOT_TOKEN: z.string().min(1, { message: "Discord Bot Token is required" }),
+    DISCORD_TOKEN: z.string().min(1, { message: "Discord Bot Token is required" }),
     WEBHOOK_LOGS_URL: z.string().url().optional(),
     GUILD_ID: z.string().optional(),
     // MongoDB
@@ -12,4 +12,6 @@ export const env = validateEnv(z.object({
     MONGODB_TLS: z.string().optional(),
     MONGODB_TLS_ALLOW_INVALID_CERTS: z.string().optional(),
     MONGODB_DIRECT_CONNECTION: z.string().optional(),
+    // Sentry
+    SENTRY_DSN: z.string().optional(),
 }));

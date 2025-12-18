@@ -2,8 +2,8 @@
  * Responder para select menu do comando /criar
  * Processa a seleção do tipo de criação
  */
-import { createResponder, ResponderType } from "#base";
 import { ActionRowBuilder, EmbedBuilder, ModalBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle, } from "discord.js";
+import { createResponder, ResponderType } from "../../base/index.js";
 function buildAcervoModal(tipo, nome, titulo) {
     const modal = new ModalBuilder()
         .setCustomId(`criar_acervo_modal/${tipo}/${nome}`)

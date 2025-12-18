@@ -1,5 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import { logger } from "../utils/logger.js";
 
 interface SplitSection {
     tipo: string;

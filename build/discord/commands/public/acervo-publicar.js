@@ -2,6 +2,7 @@ import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType, ChannelType, PermissionFlagsBits, } from "discord.js";
 import { getAllClassesExtended, getAllRacesExtended, getAvailableCategories, getImportedCategory, } from "../../../services/compendiumService.js";
 import { publishAllEntriesToThreads } from "../../../services/genericThreadPublisherService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 async function publishCategoria(categoria, channel, delayMs) {
     let items = [];
     if (categoria === "racas") {
@@ -78,6 +79,13 @@ createCommand({
         const targetChannel = interaction.options.getChannel("canal", true);
         const categoria = interaction.options.getString("categoria", true);
         const intervalo = interaction.options.getInteger("intervalo_ms") ?? 750;
+        if (!hasPermission(interaction.member, PermissionFlagsBits.ManageGuild)) {
+            await interaction.reply({
+                content: "❌ Permissão necessária: ManageGuild",
+                ephemeral: true,
+            });
+            return;
+        }
         if (!targetChannel || targetChannel.type !== ChannelType.GuildText) {
             await interaction.reply({
                 content: "❌ Selecione um canal de texto válido do servidor.",

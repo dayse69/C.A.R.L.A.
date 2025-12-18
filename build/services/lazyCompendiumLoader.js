@@ -1,3 +1,4 @@
+import { logger } from "../utils/logger.js";
 /**
  * Lazy Compendium Loader - Carrega dados sob demanda
  * Reduz uso de memória e melhora tempo de inicialização
