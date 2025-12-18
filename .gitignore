@@ -1,3 +1,13 @@
+# Build gerado
+build/
+
+# Env
+.env
+
+# Logs
+logs/
+*.log
+
 # Node
 node_modules/
 
@@ -19,3 +29,4 @@ data/
 # OS
 .DS_Store
 Thumbs.db
+.env

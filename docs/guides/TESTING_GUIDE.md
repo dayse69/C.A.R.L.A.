@@ -12,7 +12,7 @@ Antes de começar, certifique-se que:
 
 - [ ] MongoDB está rodando (local ou Atlas)
 - [ ] `.env` possui valores corretos:
-    - `BOT_TOKEN` - Token do bot Discord
+    - `DISCORD_TOKEN` - Token do bot Discord
     - `MONGODB_URI` - URI da conexão (ex: `mongodb://localhost:27017/tormenta20-bot`)
 - [ ] Build foi executado: `npm run build` ✓
 - [ ] Sem erros de compilação
@@ -356,7 +356,7 @@ mongod --version  # Deve mostrar versão
 ### Erro: "Bot token invalid"
 
 ```bash
-# Verificar .env BOT_TOKEN
+# Verificar .env DISCORD_TOKEN
 # Deve ser válido do Discord Developer Portal
 ```
 

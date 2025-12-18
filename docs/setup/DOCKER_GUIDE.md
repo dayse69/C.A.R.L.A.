@@ -22,7 +22,7 @@ Parabéns por instalar Docker e MongoDB! Aqui está como configurar tudo para ro
 cp .env.example .env
 
 # Editar .env com seus valores
-BOT_TOKEN=seu_token_aqui
+DISCORD_TOKEN=seu_token_aqui
 MONGODB_URI=mongodb://admin:password123@mongodb:27017/grimorio-corrupcao?authSource=admin
 ```
 
@@ -119,7 +119,7 @@ docker-compose exec mongodb mongosh -u admin -p password123
 ### .env (criar na raiz)
 ```env
 # Discord Bot Token (obrigatório)
-BOT_TOKEN=sua_token_aqui
+DISCORD_TOKEN=sua_token_aqui
 
 # Guild ID (opcional - para testes)
 GUILD_ID=seu_guild_id
@@ -262,7 +262,7 @@ ports:
 
 ### Erro: "Bot não conecta ao Discord"
 ```bash
-# Verificar BOT_TOKEN em .env
+# Verificar DISCORD_TOKEN em .env
 # Verificar logs
 docker-compose logs bot
 
@@ -349,7 +349,7 @@ cd "Discord Bot"
 
 # 2. Criar .env
 cp .env.example .env
-# Editar BOT_TOKEN
+# Editar DISCORD_TOKEN
 
 # 3. Build da imagem
 docker-compose build

@@ -92,7 +92,7 @@ carla-t20-bot@latest
 
 ### .env ✅
 ```env
-BOT_TOKEN=NTgyMjY2ODI1MDQ0MjYyOTQy.Gm1eKw...  ✅ Token Discord
+DISCORD_TOKEN=NTgyMjY2ODI1MDQ0MjYyOTQy.Gm1eKw...  ✅ Token Discord
 GUILD_ID=585893960309014551                     ✅ Server ID
 MONGODB_URI=mongodb://localhost:27017/...      ✅ MongoDB local
 NODE_OPTIONS="--no-warnings --no-deprecation"  ✅ Node options
@@ -140,7 +140,7 @@ Status: Built successfully
 2. **Bot Discord**
    - ✅ Build: Dockerfile
    - ✅ Depends: MongoDB (healthy)
-   - ✅ Environment: BOT_TOKEN, GUILD_ID (do .env)
+  - ✅ Environment: DISCORD_TOKEN, GUILD_ID (do .env)
    - ✅ MONGODB_URI: automático
    - ✅ Network: tormenta20-network
    - ✅ Volumes: ./logs
