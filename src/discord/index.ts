@@ -1,7 +1,7 @@
-import { setupCreators } from "#base";
-import { bootstrap } from "#base/bootstrap";
-import { env } from "#env";
 import "dotenv/config";
+import { bootstrap } from "./base/bootstrap.js";
+import { setupCreators } from "./base/index.js";
+import { env } from "./env.js";
 
 // Sentry setup
 if (env.SENTRY_DSN) {

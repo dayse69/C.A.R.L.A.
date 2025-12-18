@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { validateEnv } from "./discord/base/index.js";
+import { validateEnv } from "./base/index.js";
 
 export const env = validateEnv(
     z.object({

@@ -1,4 +1,3 @@
-import { createCommand } from "#base";
 import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
@@ -9,6 +8,7 @@ import {
     TextInputStyle,
 } from "discord.js";
 import { CampaignRepository } from "../../../database/CampaignRepository.js";
+import { createCommand } from "../../base/index.js";
 
 createCommand({
     name: "campanha",

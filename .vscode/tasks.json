@@ -1,0 +1,40 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Discord Bot",
+			"type": "shell",
+			"command": "npm run start",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Start Discord Bot",
+			"type": "shell",
+			"command": "npm run start",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Start Discord Bot",
+			"type": "shell",
+			"command": "npm run start",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Start Discord Bot",
+			"type": "shell",
+			"command": "npm run start",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Start Discord Bot",
+			"type": "shell",
+			"command": "npm run start",
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}

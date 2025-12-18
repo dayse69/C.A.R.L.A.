@@ -1,4 +1,3 @@
-import { createCommand } from "#base";
 import {
     ActionRowBuilder,
     ApplicationCommandType,
@@ -6,6 +5,7 @@ import {
     StringSelectMenuBuilder,
     StringSelectMenuOptionBuilder,
 } from "discord.js";
+import { createCommand } from "../../base/index.js";
 
 createCommand({
     name: "compendium",

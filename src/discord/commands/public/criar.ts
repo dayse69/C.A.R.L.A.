@@ -3,7 +3,6 @@
  * Sistema unificado de criação: fichas, campanhas e conteúdo do Acervo do Golem
  */
 
-import { createCommand } from "#base";
 import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
@@ -16,13 +15,14 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import { CharacterRepository } from "../../../database/CharacterRepository.js";
-import { criarMenuAbas } from "../../responders/selects/ficha-menu.js";
 import {
     converterParaCharacter,
     extrairTextoPDF,
     parsearFichaPDF,
 } from "../../../services/pdfParserService.js";
 import { criarProfileCard } from "../../../ui/cards/profileCard.js";
+import { createCommand } from "../../base/index.js";
+import { criarMenuAbas } from "../../responders/selects/ficha-menu.js";
 
 function sanitizeForCustomId(value: string) {
     // Custom IDs não podem ter '/' e caracteres especiais; normaliza para hífen

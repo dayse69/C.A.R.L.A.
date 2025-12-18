@@ -1,4 +1,3 @@
-import { createCommand, createResponder, ResponderType } from "#base";
 import { createContainer, createSection, createSeparator } from "@magicyan/discord";
 import {
     ApplicationCommandType,
@@ -6,6 +5,7 @@ import {
     ButtonStyle,
     InteractionReplyOptions,
 } from "discord.js";
+import { createCommand, createResponder, ResponderType } from "../../base/index.js";
 
 createCommand({
     name: "counter",
@@ -42,8 +42,8 @@ function counterMenu<R>(current: number): R {
                         current > 0
                             ? ButtonStyle.Primary
                             : current < 0
-                              ? ButtonStyle.Danger
-                              : ButtonStyle.Secondary,
+                            ? ButtonStyle.Danger
+                            : ButtonStyle.Secondary,
                 })
             ),
             createSeparator(),

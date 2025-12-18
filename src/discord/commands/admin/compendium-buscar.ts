@@ -6,6 +6,7 @@ import {
     PermissionFlagsBits,
 } from "discord.js";
 import { compendiumManager } from "../../../services/compendiumManagerService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 createCommand({
     name: "compendium_buscar",

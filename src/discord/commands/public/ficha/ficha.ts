@@ -4,11 +4,11 @@
  * Subcomandos: criar, ver, editar, listar
  */
 
-import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
 import { CharacterRepository } from "../../../../database/CharacterRepository.js";
 import { criarMenuAbas } from "../../../../discord/responders/selects/ficha-menu.js";
 import { criarEmbedConfirmacao, criarEmbedErro } from "../../../../ui/embeds/fichaEmbeds.js";
+import { createCommand } from "../../base/creators";
 
 const command = createCommand({
     name: "ficha",

@@ -1,6 +1,6 @@
-import { createEvent } from "#base";
 import type { ClientEvents } from "discord.js";
 import { Events, PermissionFlagsBits } from "discord.js";
+import { createEvent } from "../base/index.js";
 
 // Auto-moderação simples: bloqueia links suspeitos e palavrões básicos.
 const bannedPatterns = [/discord\.gg\//i, /http:\/\//i, /https:\/\//i];

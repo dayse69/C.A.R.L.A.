@@ -8,6 +8,7 @@ import {
     TextInputBuilder,
     TextInputStyle,
 } from "discord.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 createCommand({
     name: "compendium_adicionar",

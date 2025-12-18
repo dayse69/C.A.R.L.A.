@@ -1,6 +1,7 @@
 import { createCommand } from "#base";
 import { ApplicationCommandType, PermissionFlagsBits } from "discord.js";
 import { ensureChannels, syncAcervo } from "../../../services/acervoPublisherService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 createCommand({
     name: "acervo_setup",

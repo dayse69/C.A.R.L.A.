@@ -4,6 +4,7 @@ import {
     importChannelMessages,
     saveImportedData,
 } from "../../../services/channelImporterService.js";
+import { hasPermission } from "../../../utils/permissions.js";
 
 createCommand({
     name: "importar_canal",

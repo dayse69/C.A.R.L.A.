@@ -3,7 +3,6 @@
  * Sistema de rolagens de dados para Tormenta 20
  */
 
-import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType, EmbedBuilder } from "discord.js";
 import {
     rolarAtaque,
@@ -12,6 +11,7 @@ import {
     rolarPericia,
 } from "../../../../services/rollService.js";
 import { COLORS, EMOJIS } from "../../../../utils/constants.js";
+import { createCommand } from "../../base/creators";
 
 const command = createCommand({
     name: "rolar",
@@ -145,16 +145,16 @@ command.subcommand({
             resultado.tipo === "critico"
                 ? "✨"
                 : resultado.tipo === "falha_critica"
-                  ? "💀"
-                  : EMOJIS.DICE;
+                ? "💀"
+                : EMOJIS.DICE;
 
         const embed = new EmbedBuilder()
             .setColor(
                 (resultado.tipo === "critico"
                     ? COLORS.SUCCESS
                     : resultado.tipo === "falha_critica"
-                      ? COLORS.ACCENT
-                      : COLORS.PRIMARY) as any
+                    ? COLORS.ACCENT
+                    : COLORS.PRIMARY) as any
             )
             .setTitle(`${emoji} ${descricao}`)
             .setDescription(`\`\`\`\n${resultado.detalhes}\n\`\`\``)
@@ -209,16 +209,16 @@ command.subcommand({
             resultado.tipo === "critico"
                 ? "✨"
                 : resultado.tipo === "falha_critica"
-                  ? "💀"
-                  : EMOJIS.SWORD;
+                ? "💀"
+                : EMOJIS.SWORD;
 
         const embed = new EmbedBuilder()
             .setColor(
                 (resultado.tipo === "critico"
                     ? COLORS.SUCCESS
                     : resultado.tipo === "falha_critica"
-                      ? COLORS.ACCENT
-                      : COLORS.PRIMARY) as any
+                    ? COLORS.ACCENT
+                    : COLORS.PRIMARY) as any
             )
             .setTitle(`${emoji} Ataque`)
             .setDescription(`\`\`\`\n${resultado.detalhes}\n\`\`\``)

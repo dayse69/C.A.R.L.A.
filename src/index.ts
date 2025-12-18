@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { bootstrap } from "./base/index.js";
 import { connectDatabase as connectDatabaseAdapter } from "./database/index.js";
+import { bootstrap } from "./discord/base/index.js";
 import { warmUpCache } from "./services/compendiumService.js";
 import { setupErrorHandlers } from "./utils/errorHandler.js";
 import { logger } from "./utils/logger.js";
