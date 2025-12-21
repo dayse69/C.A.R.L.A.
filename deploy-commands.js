@@ -12,10 +12,10 @@ async function deployCommands() {
     try {
         console.log("Iniciando deploy dos comandos...");
         await rest.put(
-            Routes.applicationCommands(ENV.CLIENT_ID),
+            Routes.applicationGuildCommands(ENV.CLIENT_ID, ENV.GUILD_ID),
             { body: commands }
         );
-        console.log("Comandos registrados globalmente!");
+        console.log(`Comandos registrados na guild ${ENV.GUILD_ID}!`);
     } catch (error) {
         console.error("Erro ao registrar comandos:", error);
     }
