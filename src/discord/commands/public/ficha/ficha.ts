@@ -4,11 +4,11 @@
  * Subcomandos: criar, ver, editar, listar
  */
 
+import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
 import { CharacterRepository } from "../../../../database/CharacterRepository.js";
 import { criarMenuAbas } from "../../../../discord/responders/selects/ficha-menu.js";
 import { criarEmbedConfirmacao, criarEmbedErro } from "../../../../ui/embeds/fichaEmbeds.js";
-import { createCommand } from "../../base/creators";
 
 const command = createCommand({
     name: "ficha",
@@ -162,10 +162,11 @@ command.subcommand({
                 .setMaxLength(40)
                 .setRequired(false)
                 .setValue(
-                    personagem.classes ||
-                        (Array.isArray(personagem.classes)
-                            ? personagem.classes.map((c: any) => c.nome).join("/")
-                            : "")
+                    Array.isArray(personagem.classes)
+                        ? personagem.classes.map((c: any) => c.nome).join("/")
+                        : typeof personagem.classes === "string"
+                        ? personagem.classes
+                        : ""
                 );
 
             modal.addComponents(

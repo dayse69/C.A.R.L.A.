@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "start": "node -r dotenv/config build/discord/index.js",
-        "dev": "ts-node -r dotenv/config src/discord/index.ts",
+        "dev": "npm run build && npm start",
         "test": "vitest run",
         "test:ui": "vitest --ui",
         "deploy": "echo \"Adicione aqui seu comando de deploy (ex: git push heroku main)\"",
@@ -32,7 +32,6 @@
     "type": "module",
     "imports": {
         "#base": "./build/discord/base/index.js",
-        "#base/*": "./build/discord/base/*.js",
-        "#env": "./build/env.js"
+        "#env": "./build/env/index.js"
     }
 }

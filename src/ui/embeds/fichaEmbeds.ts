@@ -106,7 +106,9 @@ export function criarEmbedGeralFicha(character: Character): EmbedBuilder {
             },
             {
                 name: `⚔️ COMBATE`,
-                value: `Defesa \`${character.recursos?.defesa ?? 10}\` | Desl. \`${character.recursos?.deslocamento ?? 9}m\``,
+                value: `Defesa \`${character.recursos?.defesa ?? 10}\` | Desl. \`${
+                    character.recursos?.deslocamento ?? 9
+                }m\``,
                 inline: false,
             }
         )
@@ -148,7 +150,9 @@ export function criarEmbedCombateFicha(character: Character): EmbedBuilder {
         .addFields(
             {
                 name: `❤️ VITALIDADE`,
-                value: `\`${pv.atual}/${pv.maximo}\` PV${pv.temporario > 0 ? ` (+${pv.temporario} temp.)` : ""}\n${pvBarraVisual}`,
+                value: `\`${pv.atual}/${pv.maximo}\` PV${
+                    pv.temporario > 0 ? ` (+${pv.temporario} temp.)` : ""
+                }\n${pvBarraVisual}`,
                 inline: false,
             },
             {
@@ -168,7 +172,11 @@ export function criarEmbedCombateFicha(character: Character): EmbedBuilder {
             },
             {
                 name: `🧿 RESISTÊNCIAS`,
-                value: `**Fort.** \`${formatarModificador(resistencias.fortitude)}\` | **Refl.** \`${formatarModificador(resistencias.reflexos)}\` | **Von.** \`${formatarModificador(resistencias.vontade)}\``,
+                value: `**Fort.** \`${formatarModificador(
+                    resistencias.fortitude
+                )}\` | **Refl.** \`${formatarModificador(
+                    resistencias.reflexos
+                )}\` | **Von.** \`${formatarModificador(resistencias.vontade)}\``,
                 inline: false,
             }
         )
@@ -183,7 +191,9 @@ export function criarEmbedCombateFicha(character: Character): EmbedBuilder {
  */
 export function criarEmbedPericiasFicha(character: Character): EmbedBuilder {
     const pericias = character.pericias || {};
-    const periciasEntries = Object.entries(pericias).filter(([, v]) => v !== 0);
+    const periciasEntries = Object.entries(pericias).filter(
+        ([, v]) => typeof v === "number" && v !== 0
+    );
 
     let periciasText = "";
     if (periciasEntries.length === 0) {
@@ -191,8 +201,13 @@ export function criarEmbedPericiasFicha(character: Character): EmbedBuilder {
             "*Nenhuma perícia treinada*\n\nUse `/pericia treinar` para adicionar perícias.";
     } else {
         periciasText = periciasEntries
-            .sort(([, a], [, b]) => b - a)
-            .map(([nome, bonus]) => `🔍 **${nome}** — \`${formatarModificador(bonus)}\``)
+            .sort(([, a], [, b]) => (typeof b === "number" && typeof a === "number" ? b - a : 0))
+            .map(
+                ([nome, bonus]) =>
+                    `🔍 **${nome}** — \`${formatarModificador(
+                        typeof bonus === "number" ? bonus : 0
+                    )}\``
+            )
             .join("\n");
     }
 
@@ -253,7 +268,9 @@ export function criarEmbedMagiasFicha(character: Character): EmbedBuilder {
             .sort((a, b) => a.circulo - b.circulo)
             .map(
                 (magia, i) =>
-                    `${i + 1}. 🔮 **${magia.nome}** (Círculo ${magia.circulo}) — \`${magia.custoPM} PM\``
+                    `${i + 1}. 🔮 **${magia.nome}** (Círculo ${magia.circulo}) — \`${
+                        magia.custoPM
+                    } PM\``
             )
             .join("\n");
     }
@@ -292,11 +309,13 @@ export function criarEmbedInventarioFicha(character: Character): EmbedBuilder {
                     item.raridade === "Lendário"
                         ? "🌠"
                         : item.raridade === "Raro"
-                          ? "💎"
-                          : item.raridade === "Incomum"
-                            ? "✨"
-                            : "⭕";
-                return `${raridadeEmoji} **${item.nome}** ×${item.quantidade}\n*${item.descricao || "—"}*`;
+                        ? "💎"
+                        : item.raridade === "Incomum"
+                        ? "✨"
+                        : "⭕";
+                return `${raridadeEmoji} **${item.nome}** ×${item.quantidade}\n*${
+                    item.descricao || "—"
+                }*`;
             })
             .join("\n\n");
     }
@@ -510,7 +529,9 @@ export function criarEmbedReacoesFicha(character: Character): EmbedBuilder {
         reacoesText = reacoes
             .map(
                 (r: any) =>
-                    `⚡ **${r.nome}** (${r.frequencia})\n*${r.descricao}*\nAcionador: ${r.acionador}\nUsos: ${r.usosRestantes}/${r.frequencia === "ilimitada" ? "∞" : "1"}`
+                    `⚡ **${r.nome}** (${r.frequencia})\n*${r.descricao}*\nAcionador: ${
+                        r.acionador
+                    }\nUsos: ${r.usosRestantes}/${r.frequencia === "ilimitada" ? "∞" : "1"}`
             )
             .join("\n\n");
     }

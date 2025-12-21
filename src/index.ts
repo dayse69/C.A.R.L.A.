@@ -5,6 +5,8 @@ import { warmUpCache } from "./services/compendiumService.js";
 import { setupErrorHandlers } from "./utils/errorHandler.js";
 import { logger } from "./utils/logger.js";
 
+import { reportError } from "./selfRepair.js";
+
 // Setup global error handlers (sem process.exit)
 setupErrorHandlers();
 
@@ -96,10 +98,11 @@ process.on("exit", (code) => {
 });
 
 // Detectar se há algum erro não capturado
+
 process.on("uncaughtException", (err) => {
-    logger.error("[UNCAUGHT] Exceção não capturada:", err);
+    reportError(err, { type: "uncaughtException" });
 });
 
 process.on("unhandledRejection", (reason) => {
-    logger.error("[UNHANDLED] Promise rejection:", reason);
+    reportError(reason, { type: "unhandledRejection" });
 });

@@ -3,7 +3,7 @@
  * Conecta ao banco de dados e configura as coleções
  */
 
-import { env } from "#env";
+import { ENV } from "#env";
 import { Collection, Db, MongoClient, MongoServerError } from "mongodb";
 import { logger } from "../utils/logger.js";
 
@@ -32,18 +32,18 @@ export async function connectDatabase(): Promise<void> {
         return;
     }
 
-    const mongoUri = env.MONGODB_URI || "mongodb://localhost:27017/grimorio-corrupcao";
-    const dbName = env.MONGODB_DB || "grimorio-corrupcao";
+    const mongoUri = ENV.MONGODB_URI || "mongodb://localhost:27017/grimorio-corrupcao";
+    const dbName = ENV.MONGODB_DB || "grimorio-corrupcao";
 
     const isSrv = mongoUri.includes("mongodb+srv://");
     const parseBool = (v?: string, def = false) =>
         v === undefined ? def : ["1", "true", "yes", "on"].includes(String(v).toLowerCase());
 
-    const maxRetries = Number(env.MONGODB_MAX_RETRIES ?? 5);
-    const baseDelay = Number(env.MONGODB_RETRY_DELAY_MS ?? 1000);
-    const useTls = parseBool(env.MONGODB_TLS, isSrv);
-    const allowInvalidCerts = parseBool(env.MONGODB_TLS_ALLOW_INVALID_CERTS, false);
-    const directConnection = parseBool(env.MONGODB_DIRECT_CONNECTION, false);
+    const maxRetries = Number(ENV.MONGODB_MAX_RETRIES ?? 5);
+    const baseDelay = Number(ENV.MONGODB_RETRY_DELAY_MS ?? 1000);
+    const useTls = parseBool(ENV.MONGODB_TLS, isSrv);
+    const allowInvalidCerts = parseBool(ENV.MONGODB_TLS_ALLOW_INVALID_CERTS, false);
+    const directConnection = parseBool(ENV.MONGODB_DIRECT_CONNECTION, false);
 
     logger.info("Tentando conectar ao MongoDB", {
         uri: mongoUri.split("@")[1] || "local",

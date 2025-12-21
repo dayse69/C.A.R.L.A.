@@ -1,6 +1,6 @@
-# Discord Bot
+# 🤖 CARLA — Discord Bot para Tormenta 20
 
-> Bot para Discord focado em Tormenta 20, feito em Node.js/TypeScript.
+Bot de Discord focado no sistema **Tormenta 20**, desenvolvido em **Node.js + TypeScript**, com arquitetura modular, validação forte de ambiente e pronto para rodar tanto em desenvolvimento quanto em produção.
 
 ## Scripts principais
 
@@ -25,11 +25,7 @@
 -   [Guia de Contribuição](CONTRIBUTING.md)
 -   [Status de Implementação](STATUS_IMPLEMENTACAO.md)
 
-# 🤖 CARLA — Discord Bot para Tormenta 20
 
-Bot de Discord focado no sistema **Tormenta 20**, desenvolvido em **Node.js + TypeScript**, com arquitetura modular, validação forte de ambiente e pronto para rodar tanto em desenvolvimento quanto em produção.
-
----
 
 ## ✨ Visão Geral
 
@@ -219,3 +215,175 @@ Se o GitHub pedir autenticação:
 ---
 
 💜 **CARLA não é só um bot — é uma base sólida para campanhas, compêndios e automações de Tormenta 20.**
+
+## 📄 Documentação Técnica
+
+Para visão completa de arquitetura, snapshot do código e sistema de auto-reparo:
+
+👉 [CARLA_PROJECT_REPORT.md](./CARLA_PROJECT_REPORT.md)
+
+Perfeito. Vou te entregar **os dois**, de forma **simples, visual e oficial**, prontos para entrar no README sem confundir você no futuro.
+
+Vou separar em **(A) Diagrama simples** e **(B) Alinhamento oficial com Docker (dev vs prod)**.
+
+---
+
+# 🧭 A) Diagrama simples de funcionamento
+
+Este diagrama explica **como a CARLA vive**, sem depender de hardware específico.
+
+```
+┌─────────────────────┐
+│     PC PRINCIPAL     │
+│  (VS Code / Windows) │
+│─────────────────────│
+│ • Edita src/         │
+│ • Edita README.md   │
+│ • npm run dev       │
+│ • npm run build     │
+│─────────────────────│
+│ git commit / push   │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│        GITHUB        │
+│─────────────────────│
+│ • Código versionado │
+│ • README oficial    │
+│ • src/              │
+│ • docker-compose    │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│      NOTEBOOK       │
+│   (Lubuntu / Linux) │
+│─────────────────────│
+│ • git pull          │
+│ • Docker            │
+│ • MongoDB           │
+│ • npm start         │
+│ • docker compose up │
+└─────────────────────┘
+```
+
+### 📌 Regra visual
+
+* **Nada sobe sozinho**
+* **Nada executa sem você mandar**
+* **Git é a ponte**
+* **Notebook é o “corpo” da CARLA**
+* **PC é o “cérebro”**
+
+---
+
+# 🐳 B) Alinhamento oficial com Docker (DEV vs PROD)
+
+Aqui a CARLA fica **profissional de verdade**.
+
+---
+
+## 🧪 Modo DEV (desenvolvimento)
+
+📍 **Onde:** PC principal
+📍 **Objetivo:** escrever, testar, quebrar e consertar
+
+### Como roda
+
+```bash
+npm run dev
+```
+
+### Características
+
+* Usa TypeScript direto (`ts-node`, `tsx`, etc)
+* Não precisa Docker
+* Não precisa Mongo real
+* Logs verbosos
+* Pode cair sem problema
+
+### Estrutura
+
+```
+src/
+.env
+```
+
+📎 **Nada aqui é permanente**
+
+---
+
+## 🚀 Modo PROD (execução / produção)
+
+📍 **Onde:** Notebook (Lubuntu)
+📍 **Objetivo:** manter a CARLA viva
+
+### Como roda
+
+```bash
+docker compose up -d
+```
+
+ou
+
+```bash
+npm run build
+npm start
+```
+
+### Características
+
+* Usa código compilado (`build/`)
+* Docker controla serviços
+* Mongo ativo
+* Reinício automático
+* Logs de saúde
+
+### Estrutura
+
+```
+src/
+build/
+.env
+docker-compose.yml
+```
+
+📎 **Este é o estado real do bot online**
+
+---
+
+## 🔁 Relação DEV → PROD
+
+```
+DEV (PC)
+ ├─ escreve src/
+ ├─ testa
+ ├─ git push
+ ▼
+PROD (Notebook)
+ ├─ git pull
+ ├─ npm run build
+ └─ docker compose up -d
+```
+
+⚠️ **Nunca edite código direto no PROD**
+⚠️ **Nunca rode Docker no PC sem motivo**
+
+---
+
+## 🧱 Regra oficial da CARLA (documentada)
+
+```
+src/        → sempre versionado
+build/      → gerado, nunca versionado
+.env        → específico de cada máquina
+README.md   → único, vem do Git
+```
+
+---
+
+## 🧠 Frase-chave (pra você nunca se perder)
+
+> **O código não sabe onde está rodando.
+> Quem decide o ambiente é você.**

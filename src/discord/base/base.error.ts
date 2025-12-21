@@ -1,4 +1,4 @@
-import { env } from "#env";
+import { ENV } from "#env";
 import {
     brBuilder,
     createEmbed,
@@ -41,7 +41,7 @@ export async function baseErrorHandler(
 
     logger.error(brBuilder(text));
 
-    if (!env.WEBHOOK_LOGS_URL) return;
+    if (!ENV.WEBHOOK_LOGS_URL) return;
 
     const embed = createEmbed({
         color: 0x5865F2,
@@ -51,7 +51,7 @@ export async function baseErrorHandler(
         description: codeBlock("ansi", brBuilder(text)),
     });
 
-    const webhook = createWebhookClient(env.WEBHOOK_LOGS_URL);
+    const webhook = createWebhookClient(ENV.WEBHOOK_LOGS_URL);
 
     if (!webhook) {
         logger.log();

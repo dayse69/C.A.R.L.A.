@@ -1,5 +1,4 @@
-import { logger } from "../base/base.logger.js";
-import { createEvent } from "../base/creators.js";
+import { createEvent, logger } from "#base";
 
 createEvent({
     name: "Error handler",

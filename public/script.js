@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadFichas();
     setupEventListeners();
     checkDatabaseConnection();
+    setupIAEvent();
 });
 
 // ═══════════════════════════════════════════════════════════════
@@ -26,6 +27,29 @@ function setupEventListeners() {
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
     });
+}
+
+function setupIAEvent() {
+    document.getElementById("btn-ia")?.addEventListener("click", async () => {
+        const prompt = document.getElementById("ia-input").value;
+        if (!prompt.trim()) return alert("Digite uma pergunta para a IA.");
+        await perguntarIA(prompt);
+    });
+}
+
+async function perguntarIA(prompt) {
+    try {
+        const res = await fetch("http://127.0.0.1:5000/api/ia", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+        });
+        const data = await res.json();
+        alert("Resposta da IA: " + data.response);
+    } catch (err) {
+        alert("Erro ao consultar IA: " + err);
+    }
+}
 }
 
 // ═══════════════════════════════════════════════════════════════

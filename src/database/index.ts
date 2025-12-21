@@ -9,7 +9,7 @@ export * from "./localdb.js";
 export * from "./mongodb.js";
 
 // Database Adapter - Seleciona entre MongoDB e LocalDB automaticamente
-import { env } from "#env";
+import { ENV } from "#env";
 import { logger } from "../utils/logger.js";
 import localdb from "./localdb.js";
 
@@ -27,7 +27,7 @@ export async function connectDatabase(): Promise<void> {
 
     try {
         // Se MONGODB_URI não está definido ou é localhost, usar LocalDB
-        const mongoUri = env.MONGODB_URI || "mongodb://localhost:27017/grimorio-corrupcao";
+        const mongoUri = ENV.MONGODB_URI || "mongodb://localhost:27017/grimorio-corrupcao";
 
         if (!mongoUri.includes("mongodb+srv://")) {
             logger.info("MongoDB remoto não configurado. Usando LocalDB.");

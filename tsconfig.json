@@ -1,15 +1,18 @@
 {
     "compilerOptions": {
-        "target": "ES2021",
+        "target": "ES2022",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "outDir": "build",
         "rootDir": "src",
+        "outDir": "build",
+        
+        "paths": {
+            "#env": ["./src/env/index.ts"],
+            "#base": ["./src/discord/base/index.ts"]
+        },
+        "strict": false,
         "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
         "skipLibCheck": true
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "build"]
+    "include": ["src"]
 }

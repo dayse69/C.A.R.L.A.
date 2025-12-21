@@ -3,6 +3,7 @@
  * Sistema de rolagens de dados para Tormenta 20
  */
 
+import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType, EmbedBuilder } from "discord.js";
 import {
     rolarAtaque,
@@ -11,7 +12,6 @@ import {
     rolarPericia,
 } from "../../../../services/rollService.js";
 import { COLORS, EMOJIS } from "../../../../utils/constants.js";
-import { createCommand } from "../../base/creators";
 
 const command = createCommand({
     name: "rolar",

@@ -1,4 +1,4 @@
-import { env } from "#env";
+import { ENV } from "#env";
 import { CustomItents, CustomPartials } from "@magicyan/discord";
 import { glob } from "@reliverse/reglob";
 import ck from "chalk";
@@ -38,6 +38,14 @@ export async function bootstrap(options: BootstrapOptions) {
 
         await BaseCommandHandlers.register(client);
 
+        // Log detalhado dos comandos carregados
+        const commands = app.commands.build();
+        logger.log(ck.yellow("Comandos carregados:"));
+        for (const cmd of commands) {
+            const desc = ("description" in cmd && typeof cmd.description === "string") ? cmd.description : "(sem descrição)";
+            logger.log(ck.cyan(`- ${cmd.name}: ${desc}`));
+        }
+
         await Promise.all(
             Array.from(app.events.getEvents("clientReady").values()).map((data) =>
                 BaseEventHandlers.handler(data, [client])
@@ -70,7 +78,7 @@ export async function bootstrap(options: BootstrapOptions) {
 
     BaseEventHandlers.register(client);
 
-    client.login(env.BOT_TOKEN);
+    client.login(ENV.BOT_TOKEN);
 
     return { client };
 }

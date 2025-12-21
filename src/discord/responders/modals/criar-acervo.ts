@@ -1,8 +1,8 @@
 import { createResponder, ResponderType } from "#base";
-import { env } from "#env";
 import { EmbedBuilder } from "discord.js";
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import { env } from "process";
 import { hasAdminOrManageGuild } from "../../../utils/permissions.js";
 
 function loadAcervo() {

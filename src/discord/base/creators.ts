@@ -20,7 +20,7 @@ import {
 } from "./commands/types.js";
 import { ResponderData, ResponderType } from "./responders/types.js";
 import { EventData } from "./events/types.js";
-import { env } from "#env";
+import { ENV } from "#env";
 
 interface SetupCreatorsOptions {
     commands?: Partial<BaseCommandsConfig> & {
@@ -34,8 +34,8 @@ export function setupCreators(options: SetupCreatorsOptions = {}) {
 
     app.config.commands = { ...options.commands };
 
-    if (env.GUILD_ID) {
-        (app.config.commands.guilds ??= []).push(env.GUILD_ID);
+    if (ENV.GUILD_ID) {
+        (app.config.commands.guilds ??= []).push(ENV.GUILD_ID);
     }
 
     app.config.responders = { ...options.responders };
